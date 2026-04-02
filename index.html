@@ -101,9 +101,6 @@
   .tab.active { background: var(--saffron); border-color: var(--saffron); color: var(--bg); font-weight: 600; }
   .tab.trad-vaishnava.active { background: #4090cc; border-color: #4090cc; }
   .tab.trad-shaiva.active    { background: #9a4aaa; border-color: #9a4aaa; }
-  .tab.trad-shakta.active    { background: #c05050; border-color: #c05050; }
-  .tab.trad-smarta.active    { background: #1a9b8c; border-color: #1a9b8c; }
-  .tab.trad-shrauta.active   { background: #c08030; border-color: #c08030; }
 
   /* SECTION */
   .section { margin-bottom: 52px; }
@@ -143,12 +140,8 @@
   .b-eng  { background: rgba(237,224,200,0.07); color: #9e8464; border: 1px solid rgba(237,224,200,0.15); }
   .b-hin  { background: rgba(26,122,110,0.12);  color: #4abaaa; border: 1px solid rgba(26,122,110,0.28); }
   .b-vs   { background: rgba(184,50,50,0.15);   color: #e07070; border: 1px solid rgba(184,50,50,0.3); }
-  .b-srch { background: rgba(26,74,122,0.2);    color: #60aadd; border: 1px solid rgba(26,74,122,0.4); }
   .b-trad-vaishnava { background: rgba(64,144,204,0.15); color: #60aadd; border: 1px solid rgba(64,144,204,0.35); }
   .b-trad-shaiva    { background: rgba(154,74,170,0.15); color: #c080dd; border: 1px solid rgba(154,74,170,0.35); }
-  .b-trad-shakta    { background: rgba(192,80,80,0.15);  color: #e07070; border: 1px solid rgba(192,80,80,0.35); }
-  .b-trad-smarta    { background: rgba(26,155,140,0.15); color: #4abaaa; border: 1px solid rgba(26,155,140,0.35); }
-  .b-trad-shrauta   { background: rgba(192,128,48,0.15); color: #d4943a; border: 1px solid rgba(192,128,48,0.35); }
 
   /* accent colors */
   .a-saffron { --accent: #f5a623; }
@@ -213,8 +206,8 @@
 <div class="wrap">
 
 <div class="notice">
-  <span class="t-en"><strong>No apologetics.</strong> Every verse is quoted directly from the <strong>King James Version and standard English Bibles</strong> — no reinterpretation, no modern excuses. All contradictions verified 2026.</span>
-  <span class="t-hi" style="display:none"><strong>कोई बचाव नहीं।</strong> प्रत्येक आयत <strong>किंग जेम्स संस्करण और मानक बाइबल</strong> से सीधे उद्धृत — कोई नया अर्थ, कोई आधुनिक बहाना नहीं। सभी विरोधाभास २०२६ में सत्यापित।</span>
+  <span class="t-en"><strong>No apologetics.</strong> Every verse is quoted directly from standard texts — no reinterpretation, no modern excuses. All contradictions verified 2026.</span>
+  <span class="t-hi" style="display:none"><strong>कोई बचाव नहीं।</strong> प्रत्येक आयत मानक ग्रंथों से सीधे उद्धृत है — कोई नया अर्थ, कोई आधुनिक बहाना नहीं। सभी विरोधाभास २०२६ में सत्यापित।</span>
 </div>
 
 <!-- FILTER ROW 1: Issue type -->
@@ -224,6 +217,23 @@
   <div class="tabs">
     <button class="tab active" id="tab-all"          onclick="filterSection('all',this)">All Issues</button>
     <button class="tab"        id="tab-slavery"      onclick="filterSection('slavery',this)">NT Slavery</button>
+    <button class="tab"        id="tab-sign"         onclick="filterSection('sign',this)">Sign on Cross</button>
+    <button class="tab"        id="tab-spirit"       onclick="filterSection('spirit',this)">Holy Spirit</button>
+    <button class="tab"        id="tab-touch"        onclick="filterSection('touch',this)">Touching Jesus</button>
+    <button class="tab"        id="tab-rooster"      onclick="filterSection('rooster',this)">The Rooster</button>
+    <button class="tab"        id="tab-crucifixion"  onclick="filterSection('crucifixion',this)">Crucifixion Date</button>
+    <button class="tab"        id="tab-jairus"       onclick="filterSection('jairus',this)">Jairus's Daughter</button>
+    <button class="tab"        id="tab-staff"        onclick="filterSection('staff',this)">The Traveling Staff</button>
+    <button class="tab"        id="tab-disciples"    onclick="filterSection('disciples',this)">Calling Disciples</button>
+    <button class="tab"        id="tab-words"        onclick="filterSection('words',this)">Last Words</button>
+    <button class="tab"        id="tab-cross"        onclick="filterSection('cross',this)">Carrying Cross</button>
+    <button class="tab"        id="tab-birth"        onclick="filterSection('birth',this)">Nativity Conflict</button>
+    <button class="tab"        id="tab-temple"       onclick="filterSection('temple',this)">Temple Cleansing</button>
+    <button class="tab"        id="tab-ascension"    onclick="filterSection('ascension',this)">The Ascension</button>
+    <button class="tab"        id="tab-tomb_silence" onclick="filterSection('tomb_silence',this)">Empty Tomb Silence</button>
+    <button class="tab"        id="tab-paul"         onclick="filterSection('paul',this)">Paul's Vision</button>
+    <button class="tab"        id="tab-centurion"    onclick="filterSection('centurion',this)">The Centurion</button>
+    <button class="tab"        id="tab-fig"          onclick="filterSection('fig',this)">The Fig Tree</button>
     <button class="tab"        id="tab-judas"        onclick="filterSection('judas',this)">Judas's Death</button>
     <button class="tab"        id="tab-resurrection" onclick="filterSection('resurrection',this)">Resurrection</button>
     <button class="tab"        id="tab-genealogy"    onclick="filterSection('genealogy',this)">Genealogies</button>
@@ -239,14 +249,14 @@
   </div>
 </div>
 
-<!-- FILTER ROW 2: Testament -->
+<!-- FILTER ROW 2: Source -->
 <div class="filter-group">
-  <div class="filter-label t-en">Testament / Source</div>
-  <div class="filter-label t-hi" style="display:none">नियम / स्रोत</div>
+  <div class="filter-label t-en">Source Category</div>
+  <div class="filter-label t-hi" style="display:none">स्रोत श्रेणी</div>
   <div class="tabs trad-tabs">
-    <button class="tab active"         id="trad-all" onclick="filterTrad('all',this)">All Sources</button>
-    <button class="tab trad-vaishnava" id="trad-nt"  onclick="filterTrad('nt',this)">New Testament</button>
-    <button class="tab trad-shaiva"    id="trad-ot"  onclick="filterTrad('ot',this)">Old Testament</button>
+    <button class="tab active"         id="trad-all"    onclick="filterTrad('all',this)">All Sources</button>
+    <button class="tab trad-vaishnava" id="trad-nt"     onclick="filterTrad('nt',this)">New Testament</button>
+    <button class="tab trad-shaiva"    id="trad-ot"     onclick="filterTrad('ot',this)">Old Testament</button>
   </div>
 </div>
 
@@ -255,7 +265,7 @@
   <span class="t-hi" style="display:none">वर्तमान फ़िल्टर से कोई समस्या नहीं मिली — कृपया अन्य संयोजन आज़माएँ।</span>
 </div>
 
-<!-- ════ NT SLAVERY ════ -->
+<!-- ════ NT SLAVERY (FULL RESTORED CARDS) ════ -->
 <div class="section" data-s="slavery">
   <div class="sec-head">
     <h2><span class="t-en">New Testament Slavery Endorsement</span><span class="t-hi" style="display:none">नए नियम में दासता समर्थन</span></h2>
@@ -265,7 +275,6 @@
   <p class="sec-desc t-en">The New Testament repeatedly commands slaves to obey their earthly masters “with fear and trembling” and treats slavery as compatible with Christian living. These are not Old Testament laws — they are direct instructions to the early Church.</p>
   <p class="sec-desc t-hi" style="display:none">नया नियम दासों को बार-बार आदेश देता है कि वे अपने भौतिक स्वामियों की “भय और काँपते हुए” आज्ञा मानें और दासता को ईसाई जीवन के अनुकूल मानता है। ये पुराने नियम के नियम नहीं — प्रारंभिक चर्च को दिए गए प्रत्यक्ष निर्देश हैं।</p>
   <div class="grid">
-
     <a href="#" class="card a-red" data-trad="nt">
       <span class="card-icon">⛓️</span>
       <div class="card-title">Ephesians 6:5</div>
@@ -275,7 +284,6 @@
       <p class="card-desc-hi" style="display:none">"दासो, अपने शरीर के अनुसार स्वामियों की आज्ञा मानो, भय और काँपते हुए, हृदय की सच्चाई से, जैसे मसीह की आज्ञा मानते हो।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Promotes slavery</span></div>
     </a>
-
     <a href="#" class="card a-red" data-trad="nt">
       <span class="card-icon">⛓️</span>
       <div class="card-title">Colossians 3:22</div>
@@ -285,7 +293,6 @@
       <p class="card-desc-hi" style="display:none">"दासो, अपने भौतिक स्वामियों की हर बात में आज्ञा मानो। उन्हें हर समय प्रसन्न रखो, न केवल जब वे देख रहे हों। प्रभु के भय से सच्चाई से उनकी सेवा करो।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Promotes slavery</span></div>
     </a>
-
     <a href="#" class="card a-red" data-trad="nt">
       <span class="card-icon">⛓️</span>
       <div class="card-title">1 Timothy 6:1</div>
@@ -295,7 +302,6 @@
       <p class="card-desc-hi" style="display:none">"जितने दास जुआ के नीचे हैं, वे अपने स्वामियों को सब प्रकार का सम्मान दें, जिससे परमेश्वर का नाम और उसका उपदेश निन्दित न हो।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Promotes slavery</span></div>
     </a>
-
     <a href="#" class="card a-red" data-trad="nt">
       <span class="card-icon">⛓️</span>
       <div class="card-title">Titus 2:9</div>
@@ -305,7 +311,6 @@
       <p class="card-desc-hi" style="display:none">"दासों को समझाओ कि वे अपने स्वामियों की आज्ञा मानें और हर बात में उन्हें प्रसन्न रखें; जवाब न दें।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Promotes slavery</span></div>
     </a>
-
     <a href="#" class="card a-red" data-trad="nt">
       <span class="card-icon">⛓️</span>
       <div class="card-title">1 Peter 2:18</div>
@@ -315,7 +320,581 @@
       <p class="card-desc-hi" style="display:none">"दासो, अपने स्वामियों के अधीन रहो, सब प्रकार का भय रखते हुए; केवल अच्छे और सौम्य स्वामियों के ही नहीं, बल्कि कठोर स्वामियों के भी।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Promotes slavery</span></div>
     </a>
+  </div>
+</div>
 
+<!-- ════ THE SIGN ON THE CROSS ════ -->
+<div class="section" data-s="sign">
+  <div class="sec-head">
+    <h2><span class="t-en">The Sign on the Cross</span><span class="t-hi" style="display:none">क्रूस पर लिखा हुआ लेख</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Textual Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">What exactly was written on the sign above Jesus' head? All four Gospels claim to quote the exact inscription, yet all four give different words.</p>
+  <p class="sec-desc t-hi" style="display:none">यीशु के सिर के ऊपर लगे बोर्ड पर वास्तव में क्या लिखा था? चारों सुसमाचार सटीक लेख का दावा करते हैं, फिर भी चारों अलग-अलग शब्द देते हैं।</p>
+  <div class="grid">
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">🪧</span>
+      <div class="card-title">Mark 15:26 & Luke 23:38</div>
+      <div class="card-title-hi" style="display:none">मरकुस १५:२६ और लूका २३:३८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Mark:</strong> "THE KING OF THE JEWS"<br><strong>Luke:</strong> "THIS IS THE KING OF THE JEWS"</p>
+      <p class="card-desc-hi" style="display:none"><strong>मरकुस:</strong> "यहूदियों का राजा"<br><strong>लूका:</strong> "यह यहूदियों का राजा है"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">📜</span>
+      <div class="card-title">Matthew 27:37 & John 19:19</div>
+      <div class="card-title-hi" style="display:none">मत्ती २७:३७ और यूहन्ना १९:१९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew:</strong> "THIS IS JESUS THE KING OF THE JEWS"<br><strong>John:</strong> "JESUS OF NAZARETH THE KING OF THE JEWS"</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती:</strong> "यह यहूदियों का राजा यीशु है"<br><strong>यूहन्ना:</strong> "यीशु नासरी यहूदियों का राजा"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ RECEIVING THE HOLY SPIRIT ════ -->
+<div class="section" data-s="spirit">
+  <div class="sec-head">
+    <h2><span class="t-en">Receiving the Holy Spirit</span><span class="t-hi" style="display:none">पवित्र आत्मा का आगमन</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Chronological Error</span>
+  </div>
+  <p class="sec-desc t-en">When did the disciples receive the Holy Spirit? Did it happen on the very day of his resurrection via his breath, or 50 days later at Pentecost?</p>
+  <p class="sec-desc t-hi" style="display:none">चेलों को पवित्र आत्मा कब मिला? क्या यह उनके पुनरुत्थान के ही दिन उनकी सांस के माध्यम से हुआ, या ५० दिन बाद पिन्तेकुस्त के दिन?</p>
+  <div class="grid">
+    <a href="#" class="card a-blue" data-trad="nt">
+      <span class="card-icon">💨</span>
+      <div class="card-title">John 20:22</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना २०:२२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">On the evening of Resurrection Sunday: "And when he had said this, <strong>he breathed on them, and saith unto them, Receive ye the Holy Ghost</strong>:"</p>
+      <p class="card-desc-hi" style="display:none">पुनरुत्थान के दिन की शाम को: "यह कहकर उसने <strong>उन पर फूँका, और उनसे कहा; पवित्र आत्मा लो</strong>:"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-blue" data-trad="nt">
+      <span class="card-icon">🔥</span>
+      <div class="card-title">Acts 1:4 & 2:1-4</div>
+      <div class="card-title-hi" style="display:none">प्रेरितों के काम १:४ और २:१-४</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Jesus tells them to wait in Jerusalem because they have NOT received the Spirit. Fifty days later at Pentecost: "And they were all filled with the Holy Ghost..."</p>
+      <p class="card-desc-hi" style="display:none">यीशु उन्हें यरूशलेम में प्रतीक्षा करने को कहते हैं। पचास दिन बाद पिन्तेकुस्त के दिन: "और वे सब पवित्र आत्मा से भर गए..."</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ TOUCHING THE RISEN JESUS ════ -->
+<div class="section" data-s="touch">
+  <div class="sec-head">
+    <h2><span class="t-en">Touching the Risen Jesus</span><span class="t-hi" style="display:none">पुनर्जीवित यीशु को छूना</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Narrative Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">Matthew explicitly says the women grabbed Jesus's feet immediately upon seeing him. John explicitly says Jesus forbade Mary from touching him because he hadn't ascended yet.</p>
+  <p class="sec-desc t-hi" style="display:none">मत्ती स्पष्ट रूप से कहता है कि स्त्रियों ने यीशु को देखते ही उनके पैर पकड़ लिए। यूहन्ना कहता है कि यीशु ने मरियम को छूने से मना किया।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Matthew 28:9</div>
+      <div class="card-title-hi" style="display:none">मत्ती २८:९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And as they went to tell his disciples, behold, Jesus met them, saying, All hail. And they came and <strong>held him by the feet</strong>, and worshipped him."</p>
+      <p class="card-desc-hi" style="display:none">"और देखो, यीशु उन्हें मिला, और कहा; सलाम। उन्होंने पास आकर <strong>उसके पाँव पकड़े</strong>, और उसे दण्डवत् किया।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🚫</span>
+      <div class="card-title">John 20:17</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना २०:१७</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Jesus saith unto her, <strong>Touch me not; for I am not yet ascended to my Father</strong>:"</p>
+      <p class="card-desc-hi" style="display:none">"यीशु ने उससे कहा, <strong>मुझे मत छू; क्योंकि मैं अब तक पिता के पास ऊपर नहीं गया</strong>:"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE ROOSTER's CROW ════ -->
+<div class="section" data-s="rooster">
+  <div class="sec-head">
+    <h2><span class="t-en">Peter's Denial & The Rooster</span><span class="t-hi" style="display:none">पतरस का इनकार और मुर्गा</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Chronological Error</span>
+  </div>
+  <p class="sec-desc t-en">In Mark, Jesus specifically says Peter will deny him before the rooster crows *twice*. In all other gospels, it's just before the rooster crows *once*.</p>
+  <p class="sec-desc t-hi" style="display:none">मरकुस में, यीशु कहते हैं कि मुर्गे के *दो बार* बाँग देने से पहले पतरस इनकार करेगा। अन्य सुसमाचारों में, यह *एक बार* बाँग देने से पहले है।</p>
+  <div class="grid">
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🐓</span>
+      <div class="card-title">Mark 14:30</div>
+      <div class="card-title-hi" style="display:none">मरकुस १४:३०</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And Jesus saith unto him, Verily I say unto thee, That this day, even in this night, <strong>before the cock crow twice</strong>, thou shalt deny me thrice."</p>
+      <p class="card-desc-hi" style="display:none">"यीशु ने उससे कहा; मैं तुझ से सच कहता हूँ कि आज ही, हाँ इसी रात में, <strong>मुर्गे के दो बार बाँग देने से पहले</strong>, तू तीन बार मेरा इनकार करेगा।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🌅</span>
+      <div class="card-title">Matt 26:34 / Luke / John</div>
+      <div class="card-title-hi" style="display:none">मत्ती २६:३४ / लूका / यूहन्ना</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Jesus said unto him, Verily I say unto thee, That this night, <strong>before the cock crow</strong>, thou shalt deny me thrice." (The others miss the "twice" detail).</p>
+      <p class="card-desc-hi" style="display:none">"यीशु ने उससे कहा; मैं तुझ से सच कहता हूँ, कि इसी रात <strong>मुर्गे के बाँग देने से पहले</strong>, तू तीन बार मेरा इनकार करेगा।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ JAIRUS'S DAUGHTER ════ -->
+<div class="section" data-s="jairus">
+  <div class="sec-head">
+    <h2><span class="t-en">Jairus's Daughter: Dead or Dying?</span><span class="t-hi" style="display:none">याईर की बेटी: मृत या मरणासन्न?</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Narrative Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">When Jairus approached Jesus, was his daughter already dead, or was she just very sick? The Gospel authors altered the narrative, creating a direct conflict in the timeline.</p>
+  <p class="sec-desc t-hi" style="display:none">जब याईर यीशु के पास आया, तो क्या उसकी बेटी पहले ही मर चुकी थी, या वह बहुत बीमार थी? सुसमाचार लेखकों ने कथा को बदल दिया, जिससे समय-रेखा में सीधा टकराव पैदा हो गया।</p>
+  <div class="grid">
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🪦</span>
+      <div class="card-title">Matthew 9:18</div>
+      <div class="card-title-hi" style="display:none">मत्ती ९:१८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"While he spake these things unto them, behold, there came a certain ruler, and worshipped him, saying, <strong>My daughter is even now dead</strong>: but come and lay thy hand upon her, and she shall live."</p>
+      <p class="card-desc-hi" style="display:none">"...एक अधिकारी ने आकर उसे प्रणाम किया और कहा, <strong>मेरी बेटी अभी मर गई है</strong>: परन्तु तू चलकर उस पर अपना हाथ रख, तो वह जी जाएगी।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🛏️</span>
+      <div class="card-title">Mark 5:23 & Luke 8:42</div>
+      <div class="card-title-hi" style="display:none">मरकुस ५:२३ और लूका ८:४२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And besought him greatly, saying, <strong>My little daughter lieth at the point of death</strong>..." (In Mark and Luke, she is still alive when Jairus arrives, and messengers only come later to say she has finally died).</p>
+      <p class="card-desc-hi" style="display:none">"...उससे बहुत विनती करके कहा, <strong>मेरी छोटी बेटी मरने पर है</strong>..." (मरकुस और लूका में, वह अभी जीवित है, और बाद में दूत आकर बताते हैं कि वह मर गई)।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE TRAVELING STAFF ════ -->
+<div class="section" data-s="staff">
+  <div class="sec-head">
+    <h2><span class="t-en">To Take a Staff or Not?</span><span class="t-hi" style="display:none">यात्रा में लाठी ले जाएं या नहीं?</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Instructional Clash</span>
+  </div>
+  <p class="sec-desc t-en">When Jesus sends out his disciples to preach, what exactly does he tell them to bring? The gospels give diametrically opposed instructions regarding a walking staff.</p>
+  <p class="sec-desc t-hi" style="display:none">जब यीशु अपने चेलों को प्रचार करने भेजते हैं, तो वह उन्हें क्या लाने के लिए कहते हैं? सुसमाचार यात्रा की लाठी के संबंध में पूरी तरह विपरीत निर्देश देते हैं।</p>
+  <div class="grid">
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🦯</span>
+      <div class="card-title">Mark 6:8</div>
+      <div class="card-title-hi" style="display:none">मरकुस ६:८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And commanded them that they should take nothing for their journey, <strong>save a staff only</strong>; no scrip, no bread, no money in their purse:"</p>
+      <p class="card-desc-hi" style="display:none">"और उन्हें आज्ञा दी कि मार्ग के लिए <strong>एक लाठी छोड़</strong> और कुछ न लें; न झोली, न रोटी, न कमरबन्द में पैसे:"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🚫</span>
+      <div class="card-title">Luke 9:3 & Matthew 10:9-10</div>
+      <div class="card-title-hi" style="display:none">लूका ९:३ और मत्ती १०:९-१०</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And he said unto them, Take nothing for your journey, <strong>neither staves [staffs]</strong>, nor scrip, neither bread, neither money; neither have two coats apiece."</p>
+      <p class="card-desc-hi" style="display:none">"और उसने उनसे कहा, मार्ग के लिए कुछ न लो, <strong>न लाठी</strong>, न झोली, न रोटी, न पैसे; और न दो-दो कुरते लो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ CALLING THE FIRST DISCIPLES ════ -->
+<div class="section" data-s="disciples">
+  <div class="sec-head">
+    <h2><span class="t-en">Calling the First Disciples</span><span class="t-hi" style="display:none">पहले चेलों का बुलावा</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Historical Inconsistency</span>
+  </div>
+  <p class="sec-desc t-en">How did Jesus meet his first core disciples, Peter and Andrew? The Synoptic Gospels set the scene at the Sea of Galilee, but John claims they were originally disciples of John the Baptist.</p>
+  <p class="sec-desc t-hi" style="display:none">यीशु अपने पहले चेलों, पतरस और अन्द्रियास से कैसे मिले? सिनॉप्टिक गॉस्पेल गैलील के सागर का दृश्य सेट करते हैं, लेकिन यूहन्ना का दावा है कि वे मूल रूप से यूहन्ना बपतिस्मा देने वाले के चेले थे।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🎣</span>
+      <div class="card-title">Matthew 4:18-20 (Synoptics)</div>
+      <div class="card-title-hi" style="display:none">मत्ती ४:१८-२० (सिनॉप्टिक्स)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And Jesus, <strong>walking by the sea of Galilee</strong>, saw two brethren, Simon called Peter, and Andrew his brother, casting a net into the sea: for they were fishers. And he saith unto them, Follow me..."</p>
+      <p class="card-desc-hi" style="display:none">"और <strong>गैलील के सागर के तीर पर फिरते हुए</strong> उसने दो भाइयों अर्थात् शमौन को जो पतरस कहलाता है, और उसके भाई अन्द्रियास को सागर में जाल डालते देखा... और उसने उनसे कहा, मेरे पीछे चले आओ..."</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🌊</span>
+      <div class="card-title">John 1:35-42 (John)</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना १:३५-४२ (यूहन्ना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Andrew is standing with John the Baptist. "<strong>One of the two which heard John speak, and followed him, was Andrew</strong>, Simon Peter's brother. He first findeth his own brother Simon..."</p>
+      <p class="card-desc-hi" style="display:none">अन्द्रियास यूहन्ना बपतिस्मा देने वाले के साथ खड़ा है। "<strong>जिन दो ने यूहन्ना की बात सुनकर उसके पीछे हो लिए, उनमें से एक शमौन पतरस का भाई अन्द्रियास था।</strong> उसने पहले अपने सगे भाई शमौन को पाया..."</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ EDEN DECEPTION (ORIGINAL RESTORED PARAGRAPH) ════ -->
+<div class="section" data-s="eden">
+  <div class="sec-head">
+    <h2><span class="t-en">Eden Deception &amp; Immortality Lie</span><span class="t-hi" style="display:none">ईडन धोखा और अमरता का झूठ</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Immediate hypocrisy</span>
+  </div>
+  <p class="sec-desc t-en">From its very first pages the Bible lies about death and then contradicts itself about punishment. God threatens immediate death for eating from the tree of knowledge — but never carries it out.</p>
+  <p class="sec-desc t-hi" style="display:none">पहले पन्नों से ही बाइबल मृत्यु के बारे में झूठ बोलती है और फिर दंड के बारे में खुद से विरोधाभास करती है। परमेश्वर ज्ञान के वृक्ष से खाने पर तुरंत मृत्यु का धमका देता है — लेकिन कभी पूरा नहीं करता।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="ot">
+      <span class="card-icon">🌳</span>
+      <div class="card-title">Genesis 2:16-17 + 3:6-7, 3:22-24</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति २:१६-१७ + ३:६-७, ३:२२-२४</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">God says: “In the day that thou eatest thereof thou shalt surely die.” Serpent says they will not die but gain knowledge. They eat. God then admits: “The man is become as one of us… lest he put forth his hand, and take also of the tree of life, and live for ever.” Immediate lie at the start of the Bible.</p>
+      <p class="card-desc-hi" style="display:none">परमेश्वर कहता है: “जिस दिन तू उसमें से खाएगा, निश्चय मर जाएगा।” साँप कहता है वे नहीं मरेंगे बल्कि ज्ञान प्राप्त करेंगे। वे खाते हैं। परमेश्वर फिर स्वीकार करता है कि वे देवताओं के समान हो गए हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Divine lie</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ CREATION ORDER (ORIGINAL RESTORED PARAGRAPH) ════ -->
+<div class="section" data-s="creation">
+  <div class="sec-head">
+    <h2><span class="t-en">Genesis Creation Order Contradictions</span><span class="t-hi" style="display:none">उत्पत्ति में सृष्टि क्रम का विरोधाभास</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Two conflicting accounts</span>
+  </div>
+  <p class="sec-desc t-en">The Bible gives two completely different creation sequences in the very first two chapters — a clear internal contradiction.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल पहले दो अध्यायों में ही दो पूरी तरह अलग सृष्टि क्रम देती है — स्पष्ट आंतरिक विरोधाभास।</p>
+  <div class="grid">
+    <a href="#" class="card a-blue" data-trad="ot">
+      <span class="card-icon">🌍</span>
+      <div class="card-title">Genesis 1:25-27 vs Genesis 2:18-22</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति १:२५-२७ बनाम २:१८-२२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Chapter 1: Animals created before humans; male and female created together on the sixth day. Chapter 2: Man created first, then animals are formed to help him, then woman is made from his rib. Two mutually exclusive timelines.</p>
+      <p class="card-desc-hi" style="display:none">अध्याय १: जानवर मनुष्य से पहले बनाए गए; छठे दिन पुरुष और स्त्री एक साथ। अध्याय २: पहले पुरुष, फिर जानवर उसकी सहायता के लिए बनाए गए, फिर उसकी पसली से स्त्री बनाई गई।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Contradiction</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ VISIBILITY OF GOD (ORIGINAL RESTORED PARAGRAPH) ════ -->
+<div class="section" data-s="visibility">
+  <div class="sec-head">
+    <h2><span class="t-en">Seeing God Contradictions</span><span class="t-hi" style="display:none">परमेश्वर को देखने का विरोधाभास</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct self-contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The Bible cannot agree on whether humans can see God face-to-face.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल इस बात पर सहमत नहीं हो पाती कि मनुष्य परमेश्वर को आमने-सामने देख सकता है या नहीं।</p>
+  <div class="grid">
+    <a href="#" class="card a-green" data-trad="ot nt">
+      <span class="card-icon">👁️</span>
+      <div class="card-title">John 1:18 vs Exodus 33:11</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना १:१८ बनाम निर्गमन ३३:११</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">John 1:18 — “No one has ever seen God.” Exodus 33:11 — “The Lord spoke to Moses face to face, as a man speaks to his friend.” Exodus 3:2 also describes the angel of the Lord appearing visibly. Impossible to reconcile.</p>
+      <p class="card-desc-hi" style="display:none">यूहन्ना १:१८ — “परमेश्वर को किसी ने कभी नहीं देखा।” निर्गमन ३३:११ — “यहोवा मूसा से आमने-सामने बातें करता था, जैसे कोई मित्र से बातें करता है।” दोनों बातें एक साथ सही नहीं हो सकतीं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ JESUS'S LAST WORDS ════ -->
+<div class="section" data-s="words">
+  <div class="sec-head">
+    <h2><span class="t-en">Jesus's Last Words on the Cross</span><span class="t-hi" style="display:none">क्रूस पर यीशु के अंतिम शब्द</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Authorial Theology Conflict</span>
+  </div>
+  <p class="sec-desc t-en">The Gospels record three completely different final statements of Jesus before he dies, tailored to each author's specific theological view of who Jesus was.</p>
+  <p class="sec-desc t-hi" style="display:none">सुसमाचार मरने से पहले यीशु के तीन पूरी तरह से अलग अंतिम बयानों को दर्ज करते हैं।</p>
+  <div class="grid">
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🗣️</span>
+      <div class="card-title">What did Jesus say right before dying?</div>
+      <div class="card-title-hi" style="display:none">मरने से पहले यीशु ने क्या कहा?</div>
+      <div class="card-source">The Gospels</div>
+      <p class="card-desc"><strong>Matthew 27:46 / Mark 15:34:</strong> "My God, my God, why hast thou forsaken me?" (Despair).<br><strong>Luke 23:46:</strong> "Father, into thy hands I commend my spirit." (Peaceful trust).<br><strong>John 19:30:</strong> "It is finished." (Divine control).</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती/मरकुस:</strong> "हे मेरे परमेश्वर, तूने मुझे क्यों छोड़ दिया?"<br><strong>लूका:</strong> "हे पिता, मैं अपनी आत्मा तेरे हाथों में सौंपता हूँ।"<br><strong>यूहन्ना:</strong> "पूरा हुआ।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE FIG TREE ════ -->
+<div class="section" data-s="fig">
+  <div class="sec-head">
+    <h2><span class="t-en">The Withering of the Fig Tree</span><span class="t-hi" style="display:none">अंजीर के पेड़ का सूखना</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Chronological Error</span>
+  </div>
+  <p class="sec-desc t-en">Matthew and Mark fundamentally disagree on the timeline of Jesus cursing the fig tree and when the disciples noticed it withered.</p>
+  <p class="sec-desc t-hi" style="display:none">मत्ती और मरकुस इस बात पर पूरी तरह असहमत हैं कि यीशु ने अंजीर के पेड़ को कब शाप दिया और चेलों ने इसे सूखा हुआ कब देखा।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🍂</span>
+      <div class="card-title">Matthew 21:19 vs Mark 11:13-20</div>
+      <div class="card-title-hi" style="display:none">मत्ती २१:१९ बनाम मरकुस ११:१३-२०</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 21:19:</strong> Jesus curses the tree and "<strong>presently the fig tree withered away</strong>." The disciples marvel at it immediately.<br><strong>Mark 11:20:</strong> Jesus curses the tree, they leave, and they do not discover it has withered until "<strong>in the morning, as they passed by</strong>."</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती २१:१९:</strong> यीशु पेड़ को शाप देते हैं और "तुरंत अंजीर का पेड़ सूख गया।" चेले तुरंत चकित होते हैं।<br><strong>मरकुस ११:२०:</strong> वे शाप देते हैं, चले जाते हैं, और "सुबह, जब वे उधर से गुजरे" तब उन्होंने उसे सूखा देखा।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ NATIVITY CONFLICT ════ -->
+<div class="section" data-s="birth">
+  <div class="sec-head">
+    <h2><span class="t-en">The Nativity Timeline</span><span class="t-hi" style="display:none">जन्म की कहानी का विरोधाभास</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Historical Impossibility</span>
+  </div>
+  <p class="sec-desc t-en">Matthew and Luke give two entirely different, historically irreconcilable stories of Jesus's birth. King Herod died in 4 BCE, while Quirinius's census was in 6 CE—a 10-year gap making it impossible for both stories to be true.</p>
+  <p class="sec-desc t-hi" style="display:none">मत्ती और लूका यीशु के जन्म की दो पूरी तरह से अलग, ऐतिहासिक रूप से असंगत कहानियाँ देते हैं। हेरोदेस और क्विरिनियस की जनगणना के बीच १० साल का अंतर है।</p>
+  <div class="grid">
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🐪</span>
+      <div class="card-title">Matthew 2:1-15 (Flight to Egypt)</div>
+      <div class="card-title-hi" style="display:none">मत्ती २:१-१५ (मिस्र की ओर भागना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Jesus is born during the reign of <strong>King Herod</strong>. The family flees to <strong>Egypt</strong> to escape the massacre of the innocents and stays there for years until Herod dies.</p>
+      <p class="card-desc-hi" style="display:none">यीशु का जन्म <strong>राजा हेरोदेस</strong> के शासनकाल में हुआ। परिवार बच्चों के नरसंहार से बचने के लिए <strong>मिस्र</strong> भाग जाता है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">📜</span>
+      <div class="card-title">Luke 2:1-39 (The Census)</div>
+      <div class="card-title-hi" style="display:none">लूका २:१-३९ (जनगणना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Jesus is born during the census of <strong>Quirinius</strong> (10 years after Herod died). They do NOT flee to Egypt; instead, they peacefully complete their purification rituals in Jerusalem and return <strong>immediately to Nazareth</strong> (Luke 2:39).</p>
+      <p class="card-desc-hi" style="display:none">यीशु का जन्म <strong>क्विरिनियस</strong> की जनगणना (हेरोदेस की मृत्यु के १० साल बाद) के दौरान हुआ। वे मिस्र नहीं भागते; इसके बजाय, वे तुरंत <strong>नासरत</strong> लौट आते हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ CRUCIFIXION DATE ════ -->
+<div class="section" data-s="crucifixion">
+  <div class="sec-head">
+    <h2><span class="t-en">The Day of the Crucifixion</span><span class="t-hi" style="display:none">क्रूस पर चढ़ाने का दिन</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Historical & Theological Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The Synoptic Gospels state Jesus ate the Passover meal (the Last Supper) and was crucified the *following* day. However, the Gospel of John explicitly alters the timeline so Jesus is crucified *before* the Passover meal, at the exact time the Passover lambs are being slaughtered in the temple, to create a theological metaphor.</p>
+  <p class="sec-desc t-hi" style="display:none">सिनॉप्टिक गॉस्पेल कहते हैं कि यीशु ने फसह का भोजन (अंतिम भोज) किया और *अगले* दिन उन्हें क्रूस पर चढ़ाया गया। हालाँकि, यूहन्ना का सुसमाचार समय-रेखा को बदल देता है ताकि यीशु को फसह के भोजन से *पहले* क्रूस पर चढ़ाया जाए।</p>
+  <div class="grid">
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">🍞</span>
+      <div class="card-title">Mark 14:12-14 (Synoptics)</div>
+      <div class="card-title-hi" style="display:none">मरकुस १४:१२-१४ (सिनॉप्टिक्स)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And the first day of unleavened bread, <strong>when they killed the passover</strong>, his disciples said unto him, Where wilt thou that we go and prepare that thou mayest eat the passover?" — Jesus eats the Passover meal before dying.</p>
+      <p class="card-desc-hi" style="display:none">"और अखमीरी रोटी के पहिले दिन, <strong>जब वे फसह का मेमना मारते थे</strong>... यीशु मरने से पहले फसह का भोजन करते हैं।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">🐑</span>
+      <div class="card-title">John 19:14 (John)</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना १९:१४ (यूहन्ना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And it was the <strong>preparation of the passover</strong>, and about the sixth hour: and he saith unto the Jews, Behold your King!" — In John, Jesus is on trial and killed *before* the Passover meal occurs.</p>
+      <p class="card-desc-hi" style="display:none">"और वह <strong>फसह की तैयारी का दिन</strong> था, और लगभग छठा घंटा था..." — यूहन्ना में, फसह का भोजन होने से *पहले* ही यीशु को मार दिया जाता है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ CARRYING THE CROSS ════ -->
+<div class="section" data-s="cross">
+  <div class="sec-head">
+    <h2><span class="t-en">Who Carried the Cross?</span><span class="t-hi" style="display:none">क्रूस किसने उठाया?</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Historical & Textual Clash</span>
+  </div>
+  <p class="sec-desc t-en">The Synoptic Gospels explicitly state that a passerby, Simon of Cyrene, was compelled to carry Jesus's cross. The Gospel of John, however, insists Jesus carried his own cross entirely by himself, deliberately omitting Simon.</p>
+  <p class="sec-desc t-hi" style="display:none">सिनॉप्टिक गॉस्पेल स्पष्ट रूप से बताते हैं कि एक राहगीर, शमौन कुरेनी को यीशु का क्रूस उठाने के लिए मजबूर किया गया था। हालाँकि, यूहन्ना का सुसमाचार ज़ोर देकर कहता है कि यीशु ने अपना क्रूस स्वयं उठाया।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🚶‍♂️</span>
+      <div class="card-title">Mark 15:21 (Synoptics)</div>
+      <div class="card-title-hi" style="display:none">मरकुस १५:२१ (सिनॉप्टिक्स)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And they compel one Simon a Cyrenian, who passed by, coming out of the country... <strong>to bear his cross.</strong>" (Also in Matt 27:32 and Luke 23:26).</p>
+      <p class="card-desc-hi" style="display:none">"और उन्होंने एक कुरेनी शमौन को, जो गाँव से आ रहा था... <strong>मजबूर किया कि उसका क्रूस उठाए।</strong>"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">✝️</span>
+      <div class="card-title">John 19:17 (John)</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना १९:१७ (यूहन्ना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And he <strong>bearing his cross</strong> went forth into a place called the place of a skull, which is called in the Hebrew Golgotha:" — John removes Simon to make a theological point about Jesus being entirely in control.</p>
+      <p class="card-desc-hi" style="display:none">"और वह <strong>अपना क्रूस आप उठाए हुए</strong> उस स्थान तक बाहर गया जो खोपड़ी का स्थान कहलाता है:"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE TEMPLE CLEANSING ════ -->
+<div class="section" data-s="temple">
+  <div class="sec-head">
+    <h2><span class="t-en">The Temple Cleansing Timeline</span><span class="t-hi" style="display:none">मंदिर की शुद्धि का समय</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Chronological Breakdown</span>
+  </div>
+  <p class="sec-desc t-en">Did Jesus cleanse the temple at the very end of his ministry, leading directly to his arrest, or at the very beginning of his ministry? The Synoptic Gospels and John fundamentally disagree on when this major historical event occurred.</p>
+  <p class="sec-desc t-hi" style="display:none">क्या यीशु ने अपने सेवकाई के अंत में मंदिर को शुद्ध किया, जिससे सीधे उनकी गिरफ्तारी हुई, या बिल्कुल शुरुआत में? इस प्रमुख ऐतिहासिक घटना पर सुसमाचार पूरी तरह असहमत हैं।</p>
+  <div class="grid">
+    <a href="#" class="card a-blue" data-trad="nt">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">Matthew 21:12 (Synoptics)</div>
+      <div class="card-title-hi" style="display:none">मत्ती २१:१२ (सिनॉप्टिक्स)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Occurs at the <strong>very end of Jesus's ministry</strong>, just days before he is crucified. This is the inciting incident that causes the Romans and Jewish authorities to execute him.</p>
+      <p class="card-desc-hi" style="display:none">यह यीशु की सेवकाई के <strong>बिल्कुल अंत में</strong> होता है, उनके क्रूस पर चढ़ाए जाने से कुछ ही दिन पहले।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-blue" data-trad="nt">
+      <span class="card-icon">🕊️</span>
+      <div class="card-title">John 2:13-15 (John)</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना २:१३-१५ (यूहन्ना)</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Occurs at the <strong>very beginning of Jesus's ministry</strong> (Chapter 2 out of 21), before he has even met most of his disciples or performed his major miracles.</p>
+      <p class="card-desc-hi" style="display:none">यह यीशु की सेवकाई की <strong>बिल्कुल शुरुआत में</strong> होता है (२१ में से अध्याय २), इससे पहले कि वह अपने अधिकांश चेलों से मिले हों।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE ASCENSION TIMELINE ════ -->
+<div class="section" data-s="ascension">
+  <div class="sec-head">
+    <h2><span class="t-en">The Ascension Timeline</span><span class="t-hi" style="display:none">स्वर्गारोहण की समय-रेखा</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Authorial Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">When and where did Jesus ascend to heaven? This is a notoriously irreconcilable contradiction because it occurs between the Gospel of Luke and the Book of Acts—two books traditionally attributed to the exact same author.</p>
+  <p class="sec-desc t-hi" style="display:none">यीशु स्वर्ग कब और कहाँ गए? यह एक ऐसा विरोधाभास है जिसे सुलझाया नहीं जा सकता क्योंकि यह लूका के सुसमाचार और प्रेरितों के काम के बीच होता है—दो पुस्तकें जिन्हें पारंपरिक रूप से एक ही लेखक द्वारा लिखा गया माना जाता है।</p>
+  <div class="grid">
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🌅</span>
+      <div class="card-title">Luke 24:50-51</div>
+      <div class="card-title-hi" style="display:none">लूका २४:५०-५१</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Jesus ascends into heaven on the <strong>very same day</strong> as his resurrection (Easter Sunday), and he does it from <strong>Bethany</strong>.</p>
+      <p class="card-desc-hi" style="display:none">यीशु अपने पुनरुत्थान (ईस्टर रविवार) के <strong>उसी दिन</strong> स्वर्ग में जाते हैं, और वह ऐसा <strong>बैतनिय्याह</strong> से करते हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-teal" data-trad="nt">
+      <span class="card-icon">⏳</span>
+      <div class="card-title">Acts 1:3-9</div>
+      <div class="card-title-hi" style="display:none">प्रेरितों के काम १:३-९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Jesus does NOT ascend on Easter Sunday. Instead, he remains on Earth for <strong>forty days</strong>, and eventually ascends from <strong>Mount Olivet</strong> (Mount of Olives).</p>
+      <p class="card-desc-hi" style="display:none">यीशु ईस्टर रविवार को स्वर्ग नहीं जाते। इसके बजाय, वह <strong>चालीस दिनों</strong> तक पृथ्वी पर रहते हैं, और अंततः <strong>जैतून पर्वत</strong> से स्वर्गारोहण करते हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ EMPTY TOMB SILENCE ════ -->
+<div class="section" data-s="tomb_silence">
+  <div class="sec-head">
+    <h2><span class="t-en">Did the Women Tell Anyone?</span><span class="t-hi" style="display:none">क्या स्त्रियों ने किसी को बताया?</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Internal Conflict</span>
+  </div>
+  <p class="sec-desc t-en">The original ending of the Gospel of Mark states the women fled the empty tomb and told absolutely no one because they were afraid. Matthew and Luke deliberately rewrite this scene to say they immediately ran to tell the disciples.</p>
+  <p class="sec-desc t-hi" style="display:none">मरकुस के सुसमाचार के मूल अंत में कहा गया है कि स्त्रियाँ खाली कब्र से भाग गईं और डर के कारण उन्होंने किसी को कुछ नहीं बताया। मत्ती और लूका इस दृश्य को बदलकर कहते हैं कि वे तुरंत चेलों को बताने के लिए दौड़ीं।</p>
+  <div class="grid">
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🤐</span>
+      <div class="card-title">Mark 16:8</div>
+      <div class="card-title-hi" style="display:none">मरकुस १६:८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And they went out quickly, and fled from the sepulchre; for they trembled and were amazed: <strong>neither said they any thing to any man</strong>; for they were afraid."</p>
+      <p class="card-desc-hi" style="display:none">"और वे शीघ्र बाहर निकलकर कब्र से भाग गईं; क्योंकि वे काँप रही थीं और चकित थीं: <strong>और उन्होंने किसी से कुछ न कहा</strong>; क्योंकि वे डरती थीं।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🏃‍♀️</span>
+      <div class="card-title">Matthew 28:8 & Luke 24:9</div>
+      <div class="card-title-hi" style="display:none">मत्ती २८:८ और लूका २४:९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew:</strong> "...and did <strong>run to bring his disciples word</strong>."<br><strong>Luke:</strong> "And returned from the sepulchre, and <strong>told all these things unto the eleven</strong>, and to all the rest."</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती:</strong> "...और उसके चेलों को समाचार देने के लिए <strong>दौड़ गईं</strong>।"<br><strong>लूका:</strong> "और कब्र से लौटकर, <strong>इन सब बातों का समाचार उन ग्यारहों और अन्य सब को दिया</strong>।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ PAUL'S VISION CONTRADICTION ════ -->
+<div class="section" data-s="paul">
+  <div class="sec-head">
+    <h2><span class="t-en">Paul's Damascus Road Vision</span><span class="t-hi" style="display:none">पौलुस का दमिश्क मार्ग का दर्शन</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Internal Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The Book of Acts tells the story of the Apostle Paul's miraculous conversion on the road to Damascus three separate times. However, the author bungles the details, directly contradicting himself on what Paul's companions heard and saw.</p>
+  <p class="sec-desc t-hi" style="display:none">प्रेरितों के काम की पुस्तक तीन अलग-अलग बार दमिश्क मार्ग पर प्रेरित पौलुस के चमत्कारी रूपांतरण की कहानी बताती है। हालाँकि, लेखक विवरणों को बिगाड़ देता है, और पौलुस के साथियों ने क्या सुना और देखा, इस पर सीधा अपना ही खंडन करता है।</p>
+  <div class="grid">
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🗣️</span>
+      <div class="card-title">Acts 9:7</div>
+      <div class="card-title-hi" style="display:none">प्रेरितों के काम ९:७</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And the men which journeyed with him stood speechless, <strong>hearing a voice</strong>, but seeing no man." — The men heard the voice.</p>
+      <p class="card-desc-hi" style="display:none">"और जो मनुष्य उसके साथ यात्रा कर रहे थे, वे अवाक् खड़े रह गए; <strong>उन्होंने शब्द तो सुना</strong>, परन्तु किसी को न देखा।" — आदमियों ने आवाज़ सुनी।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🔇</span>
+      <div class="card-title">Acts 22:9</div>
+      <div class="card-title-hi" style="display:none">प्रेरितों के काम २२:९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And they that were with me saw indeed the light, and were afraid; <strong>but they heard not the voice</strong> of him that spake to me." — The exact opposite claim: the men did not hear the voice.</p>
+      <p class="card-desc-hi" style="display:none">"और जो मेरे साथ थे, उन्होंने ज्योति तो देखी और डर गए, <strong>परन्तु जो मुझ से बोल रहा था, उसका शब्द न सुना</strong>।" — ठीक विपरीत दावा: आदमियों ने आवाज़ नहीं सुनी।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ THE CENTURION ════ -->
+<div class="section" data-s="centurion">
+  <div class="sec-head">
+    <h2><span class="t-en">The Centurion's Approach</span><span class="t-hi" style="display:none">सूबेदार का दृष्टिकोण</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct Character Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">Did the Roman centurion come directly to Jesus to ask for healing, or did he specifically send Jewish elders because he felt unworthy to approach Jesus in person? Matthew and Luke give entirely different accounts of the same encounter.</p>
+  <p class="sec-desc t-hi" style="display:none">क्या रोमी सूबेदार चंगाई माँगने के लिए सीधे यीशु के पास आया था, या उसने विशेष रूप से यहूदी प्राचीनों को भेजा था क्योंकि वह व्यक्तिगत रूप से आने के योग्य महसूस नहीं करता था? मत्ती और लूका पूरी तरह से अलग विवरण देते हैं।</p>
+  <div class="grid">
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🪖</span>
+      <div class="card-title">Matthew 8:5-8</div>
+      <div class="card-title-hi" style="display:none">मत्ती ८:५-८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And when Jesus was entered into Capernaum, <strong>there came unto him a centurion</strong>, beseeching him... The centurion answered and said, Lord, I am not worthy..." — He approaches Jesus personally.</p>
+      <p class="card-desc-hi" style="display:none">"और जब यीशु कफरनहूम में आया, <strong>तो एक सूबेदार उसके पास आया</strong>, और उससे विनती की... सूबेदार ने उत्तर दिया, प्रभु, मैं इस योग्य नहीं..."</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="#" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">✉️</span>
+      <div class="card-title">Luke 7:3-6</div>
+      <div class="card-title-hi" style="display:none">लूका ७:३-६</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And when he heard of Jesus, <strong>he sent unto him the elders of the Jews</strong>... saying unto him, Lord, trouble not thyself... <strong>Wherefore neither thought I myself worthy to come unto thee:</strong>"</p>
+      <p class="card-desc-hi" style="display:none">"और जब उसने यीशु के विषय में सुना, <strong>तो यहूदियों के प्राचीनों को उसके पास भेजा</strong>... कि प्रभु, कष्ट न कर... <strong>इसीलिए मैंने अपने आपको इस योग्य भी न समझा कि तेरे पास आऊँ:</strong>"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
   </div>
 </div>
 
@@ -329,7 +908,6 @@
   <p class="sec-desc t-en">The core of Christian theology splits completely on how one is saved. Paul argues repeatedly that salvation is by faith alone and not by works, while James explicitly attacks this doctrine, stating faith without works is dead and cannot save.</p>
   <p class="sec-desc t-hi" style="display:none">ईसाई धर्मशास्त्र का मूल इस बात पर पूरी तरह विभाजित है कि किसी का उद्धार कैसे होता है। पौलुस तर्क देता है कि उद्धार केवल विश्वास से है, जबकि याकूब इस सिद्धांत पर स्पष्ट हमला करता है।</p>
   <div class="grid">
-
     <a href="#" class="card a-saffron" data-trad="nt">
       <span class="card-icon">✝️</span>
       <div class="card-title">Ephesians 2:8-9 & Romans 3:28</div>
@@ -339,7 +917,6 @@
       <p class="card-desc-hi" style="display:none"><strong>इफिसियों:</strong> "क्योंकि अनुग्रह ही से विश्वास के द्वारा तुम्हारा उद्धार हुआ है... और यह कर्मों के कारण नहीं, ऐसा न हो कि कोई घमंड करे।"<br><strong>रोमियों:</strong> "इसलिए हम यह निष्कर्ष निकालते हैं कि मनुष्य व्यवस्था के कामों के बिना विश्वास के द्वारा धर्मी ठहरता है।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
     <a href="#" class="card a-saffron" data-trad="nt">
       <span class="card-icon">🔨</span>
       <div class="card-title">James 2:24</div>
@@ -349,7 +926,6 @@
       <p class="card-desc-hi" style="display:none">"सो तुम ने देख लिया कि मनुष्य केवल विश्वास से ही नहीं, वरन कर्मों से भी धर्मी ठहरता है।" — रोमियों और इफिसियों में पौलुस के धर्मशास्त्र का सीधा, शब्द-श: विरोधाभास।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -363,7 +939,6 @@
   <p class="sec-desc t-en">The Bible provides two entirely different, contradictory accounts of how Judas Iscariot died and what happened to his blood money. Christians cannot reconcile these without making up events not found in the text.</p>
   <p class="sec-desc t-hi" style="display:none">बाइबल यहूदा इस्करियोती की मृत्यु और उसके पैसों का क्या हुआ, इसके बारे में दो पूरी तरह से अलग, विरोधाभासी विवरण देती है।</p>
   <div class="grid">
-
     <a href="#" class="card a-purple" data-trad="nt">
       <span class="card-icon">💰</span>
       <div class="card-title">Matthew 27:3-8</div>
@@ -373,7 +948,6 @@
       <p class="card-desc-hi" style="display:none">यहूदा पछताता है, <strong>पुजारियों को पैसे लौटाता है, और जाकर फाँसी लगा लेता है</strong>। पुजारी उस पैसे को लेकर कुम्हार का खेत खरीदते हैं।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
     <a href="#" class="card a-purple" data-trad="nt">
       <span class="card-icon">🩸</span>
       <div class="card-title">Acts 1:18</div>
@@ -383,7 +957,6 @@
       <p class="card-desc-hi" style="display:none">यहूदा पैसे नहीं लौटाता। इसके बजाय, <strong>वह खुद खेत खरीदता है</strong>। वह फाँसी नहीं लगाता, बल्कि <strong>सिर के बल गिरता है और बीच से फट जाता है</strong>, और उसकी अंतड़ियाँ बाहर निकल आती हैं।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -397,7 +970,6 @@
   <p class="sec-desc t-en">Does God punish sons for the sins of their fathers? The Old Testament law explicitly says yes in Exodus, but later prophets like Ezekiel dedicate entire chapters to saying God absolutely does not do this.</p>
   <p class="sec-desc t-hi" style="display:none">क्या परमेश्वर पिताओं के पापों के लिए पुत्रों को दंड देता है? पुराना नियम निर्गमन में स्पष्ट रूप से 'हाँ' कहता है, लेकिन यहेजकेल जैसे बाद के नबी पूरी तरह से कहते हैं कि परमेश्वर ऐसा बिल्कुल नहीं करता।</p>
   <div class="grid">
-
     <a href="#" class="card a-red" data-trad="ot">
       <span class="card-icon">⚖️</span>
       <div class="card-title">Exodus 20:5 & 34:7</div>
@@ -407,7 +979,6 @@
       <p class="card-desc-hi" style="display:none">"मैं तेरा परमेश्वर यहोवा जलन रखने वाला ईश्वर हूँ, और जो मुझ से बैर रखते हैं, उनके पिताओं के अधर्म का दंड उनके बच्चों को तीसरी और चौथी पीढ़ी तक देता हूँ।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
     <a href="#" class="card a-red" data-trad="ot">
       <span class="card-icon">🛡️</span>
       <div class="card-title">Ezekiel 18:20 & Deut 24:16</div>
@@ -417,7 +988,6 @@
       <p class="card-desc-hi" style="display:none">"जो प्राणी पाप करे वही मरेगा। न तो पुत्र पिता के अधर्म का भार उठाएगा, और न पिता पुत्र के अधर्म का भार उठाएगा।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -431,7 +1001,6 @@
   <p class="sec-desc t-en">The Bible claims in several places that God is perfectly omniscient and does not "repent" or change his mind like humans do. Yet, in other places, God explicitly regrets his actions, changes his mind, and alters his plans.</p>
   <p class="sec-desc t-hi" style="display:none">बाइबल कई स्थानों पर दावा करती है कि परमेश्वर सर्वज्ञ है और मनुष्यों की तरह अपना मन नहीं बदलता। फिर भी, अन्य स्थानों पर, परमेश्वर स्पष्ट रूप से अपने कार्यों पर पछताता है और अपना मन बदलता है।</p>
   <div class="grid">
-
     <a href="#" class="card a-blue" data-trad="ot">
       <span class="card-icon">🧠</span>
       <div class="card-title">Numbers 23:19 & 1 Sam 15:29</div>
@@ -441,7 +1010,6 @@
       <p class="card-desc-hi" style="display:none">"परमेश्वर मनुष्य नहीं है कि झूठ बोले, और न वह आदमी है कि अपनी इच्छा बदले (पछताए)। क्या उसने जो कहा है वह न करेगा?"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
     <a href="#" class="card a-blue" data-trad="ot">
       <span class="card-icon">🔄</span>
       <div class="card-title">Genesis 6:6 & 1 Samuel 15:11</div>
@@ -451,7 +1019,6 @@
       <p class="card-desc-hi" style="display:none"><strong>उत्पत्ति:</strong> "और यहोवा पृथ्वी पर मनुष्य को बनाने से पछताया..."<br><strong>१ शमूएल १५:११:</strong> "मैं शाऊल को राजा बनाकर पछताता हूँ..."</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -465,7 +1032,6 @@
   <p class="sec-desc t-en">Will the Earth exist forever, or will it be completely destroyed by fire? The Bible makes absolute statements supporting both outcomes.</p>
   <p class="sec-desc t-hi" style="display:none">क्या पृथ्वी हमेशा के लिए रहेगी, या यह पूरी तरह से आग से नष्ट हो जाएगी? बाइबल दोनों परिणामों का समर्थन करते हुए पूर्ण बयान देती है।</p>
   <div class="grid">
-
     <a href="#" class="card a-green" data-trad="ot">
       <span class="card-icon">🌎</span>
       <div class="card-title">Ecclesiastes 1:4 & Psalm 104:5</div>
@@ -475,7 +1041,6 @@
       <p class="card-desc-hi" style="display:none">"एक पीढ़ी जाती है, और दूसरी पीढ़ी आती है: परन्तु पृथ्वी सर्वदा बनी रहती है।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
     <a href="#" class="card a-green" data-trad="nt">
       <span class="card-icon">🔥</span>
       <div class="card-title">2 Peter 3:10 & Revelation 21:1</div>
@@ -485,7 +1050,6 @@
       <p class="card-desc-hi" style="display:none">"प्रभु का दिन चोर की नाईं आएगा; उस दिन आकाश बड़ी आहट के साथ टल जाएंगे, और तत्व बहुत तप्त होकर पिघल जाएंगे, और पृथ्वी और उस पर के काम जल जाएंगे।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -499,7 +1063,6 @@
   <p class="sec-desc t-en">The resurrection is the central pillar of Christianity, yet the four Gospel authors cannot agree on basic facts: who went to the tomb, how many angels they saw, and what they were told.</p>
   <p class="sec-desc t-hi" style="display:none">पुनरुत्थान ईसाई धर्म का मुख्य स्तंभ है, फिर भी चारों सुसमाचार लेखक बुनियादी तथ्यों पर सहमत नहीं हो सकते: कब्र पर कौन गया, कितने स्वर्गदूत थे, और उनसे क्या कहा गया।</p>
   <div class="grid">
-
     <a href="#" class="card a-teal" data-trad="nt">
       <span class="card-icon">🧍‍♀️</span>
       <div class="card-title">Who Went to the Tomb?</div>
@@ -509,7 +1072,6 @@
       <p class="card-desc-hi" style="display:none"><strong>यूहन्ना २०:१</strong> — केवल मरियम मगदलीनी।<br><strong>मत्ती २८:१</strong> — मरियम मगदलीनी और "दूसरी मरियम"।<br><strong>मरकुस १६:१</strong> — मरियम मगदलीनी, याकूब की माता मरियम, और सलोमी।<br><strong>लूका २४:१०</strong> — मरियम मगदलीनी, योअन्ना, याकूब की माता मरियम, और "अन्य स्त्रियाँ"।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
     <a href="#" class="card a-teal" data-trad="nt">
       <span class="card-icon">🪽</span>
       <div class="card-title">How Many Angels?</div>
@@ -519,7 +1081,6 @@
       <p class="card-desc-hi" style="display:none"><strong>मत्ती २८:२</strong> — एक स्वर्गदूत बाहर बैठा था।<br><strong>मरकुस १६:५</strong> — एक जवान व्यक्ति अंदर बैठा था।<br><strong>लूका २४:४</strong> — दो पुरुष अंदर खड़े थे।<br><strong>यूहन्ना २०:१२</strong> — दो स्वर्गदूत अंदर बैठे थे।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -533,7 +1094,6 @@
   <p class="sec-desc t-en">Matthew and Luke attempt to prove Jesus is descended from King David, but they provide mutually exclusive family trees that wildly disagree on the names and number of generations.</p>
   <p class="sec-desc t-hi" style="display:none">मत्ती और लूका यह साबित करने का प्रयास करते हैं कि यीशु राजा दाऊद के वंशज हैं, लेकिन वे पूरी तरह से अलग वंशावली देते हैं जो नामों और पीढ़ियों की संख्या पर असहमत हैं।</p>
   <div class="grid">
-
     <a href="#" class="card a-saffron" data-trad="nt">
       <span class="card-icon">📜</span>
       <div class="card-title">Matthew 1 vs Luke 3</div>
@@ -543,7 +1103,6 @@
       <p class="card-desc-hi" style="display:none"><strong>मत्ती</strong> यीशु की वंशावली दाऊद के पुत्र <strong>सुलैमान</strong> से जोड़ता है। वह कहता है कि यूसुफ का पिता <strong>याकूब</strong> है।<br><br><strong>लूका</strong> वंशावली दाऊद के पुत्र <strong>नातान</strong> से जोड़ता है। वह कहता है कि यूसुफ का पिता <strong>एली</strong> है।</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
-
   </div>
 </div>
 
@@ -557,7 +1116,6 @@
   <p class="sec-desc t-en">The Bible records the exact same historical event (King David taking a census) in two different books, but fundamentally disagrees on who caused him to do it.</p>
   <p class="sec-desc t-hi" style="display:none">बाइबल एक ही ऐतिहासिक घटना (राजा दाऊद की जनगणना) को दो अलग-अलग पुस्तकों में दर्ज करती है, लेकिन यह पूरी तरह से असहमत है कि उसे ऐसा करने के लिए किसने उकसाया।</p>
   <div class="grid">
-
     <a href="#" class="card a-purple" data-trad="ot">
       <span class="card-icon">👑</span>
       <div class="card-title">2 Samuel 24:1 vs 1 Chronicles 21:1</div>
@@ -567,79 +1125,6 @@
       <p class="card-desc-hi" style="display:none"><strong>२ शमूएल २४:१</strong>: "तब <strong>यहोवा</strong> का कोप इस्राएल पर भड़का, और उसने दाऊद को उकसाया कि जा, इस्राएल की गिनती कर।"<br><br><strong>१ इतिहास २१:१</strong>: "और <strong>शैतान</strong> इस्राएल के विरुद्ध खड़ा हुआ, और दाऊद को इस्राएल की गिनती करने के लिए उकसाया।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
-
-  </div>
-</div>
-
-<!-- ════ EDEN DECEPTION ════ -->
-<div class="section" data-s="eden">
-  <div class="sec-head">
-    <h2><span class="t-en">Eden Deception &amp; Immortality Lie</span><span class="t-hi" style="display:none">ईडन धोखा और अमरता का झूठ</span></h2>
-    <div class="sec-line"></div>
-    <span class="sec-tag">Immediate hypocrisy</span>
-  </div>
-  <p class="sec-desc t-en">From its very first pages the Bible lies about death and then contradicts itself about punishment. God threatens immediate death for eating from the tree of knowledge — but never carries it out.</p>
-  <p class="sec-desc t-hi" style="display:none">पहले पन्नों से ही बाइबल मृत्यु के बारे में झूठ बोलती है और फिर दंड के बारे में खुद से विरोधाभास करती है। परमेश्वर ज्ञान के वृक्ष से खाने पर तुरंत मृत्यु का धमका देता है — लेकिन कभी पूरा नहीं करता।</p>
-  <div class="grid">
-
-    <a href="#" class="card a-teal" data-trad="ot">
-      <span class="card-icon">🌳</span>
-      <div class="card-title">Genesis 2:16-17 + 3:4-5, 3:22-24</div>
-      <div class="card-title-hi" style="display:none">उत्पत्ति २:१६-१७ + ३:४-५, ३:२२-२४</div>
-      <div class="card-source">King James Version</div>
-      <p class="card-desc">God says: “In the day that thou eatest thereof thou shalt surely die.” Serpent says they will not die but gain knowledge. They eat. God then admits: “The man is become as one of us… lest he put forth his hand, and take also of the tree of life, and live for ever.” Immediate lie at the start of the Bible.</p>
-      <p class="card-desc-hi" style="display:none">परमेश्वर कहता है: “जिस दिन तू उसमें से खाएगा, निश्चय मर जाएगा।” साँप कहता है वे नहीं मरेंगे बल्कि ज्ञान प्राप्त करेंगे। वे खाते हैं। परमेश्वर फिर स्वीकार करता है कि वे देवताओं के समान हो गए हैं।</p>
-      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Divine lie</span></div>
-    </a>
-
-  </div>
-</div>
-
-<!-- ════ CREATION ORDER ════ -->
-<div class="section" data-s="creation">
-  <div class="sec-head">
-    <h2><span class="t-en">Genesis Creation Order Contradictions</span><span class="t-hi" style="display:none">उत्पत्ति में सृष्टि क्रम का विरोधाभास</span></h2>
-    <div class="sec-line"></div>
-    <span class="sec-tag">Two conflicting accounts</span>
-  </div>
-  <p class="sec-desc t-en">The Bible gives two completely different creation sequences in the very first two chapters — a clear internal contradiction.</p>
-  <p class="sec-desc t-hi" style="display:none">बाइबल पहले दो अध्यायों में ही दो पूरी तरह अलग सृष्टि क्रम देती है — स्पष्ट आंतरिक विरोधाभास।</p>
-  <div class="grid">
-
-    <a href="#" class="card a-blue" data-trad="ot">
-      <span class="card-icon">🌍</span>
-      <div class="card-title">Genesis 1:25-27 vs Genesis 2:18-22</div>
-      <div class="card-title-hi" style="display:none">उत्पत्ति १:२५-२७ बनाम २:१८-२२</div>
-      <div class="card-source">King James Version</div>
-      <p class="card-desc">Chapter 1: Animals created before humans; male and female created together on the sixth day. Chapter 2: Man created first, then animals are formed to help him, then woman is made from his rib. Two mutually exclusive timelines.</p>
-      <p class="card-desc-hi" style="display:none">अध्याय १: जानवर मनुष्य से पहले बनाए गए; छठे दिन पुरुष और स्त्री एक साथ। अध्याय २: पहले पुरुष, फिर जानवर उसकी सहायता के लिए बनाए गए, फिर उसकी पसली से स्त्री बनाई गई।</p>
-      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Contradiction</span></div>
-    </a>
-
-  </div>
-</div>
-
-<!-- ════ VISIBILITY OF GOD ════ -->
-<div class="section" data-s="visibility">
-  <div class="sec-head">
-    <h2><span class="t-en">Seeing God Contradictions</span><span class="t-hi" style="display:none">परमेश्वर को देखने का विरोधाभास</span></h2>
-    <div class="sec-line"></div>
-    <span class="sec-tag">Direct self-contradiction</span>
-  </div>
-  <p class="sec-desc t-en">The Bible cannot agree on whether humans can see God face-to-face.</p>
-  <p class="sec-desc t-hi" style="display:none">बाइबल इस बात पर सहमत नहीं हो पाती कि मनुष्य परमेश्वर को आमने-सामने देख सकता है या नहीं।</p>
-  <div class="grid">
-
-    <a href="#" class="card a-green" data-trad="ot nt">
-      <span class="card-icon">👁️</span>
-      <div class="card-title">John 1:18 vs Exodus 33:11</div>
-      <div class="card-title-hi" style="display:none">यूहन्ना १:१८ बनाम निर्गमन ३३:११</div>
-      <div class="card-source">King James Version</div>
-      <p class="card-desc">John 1:18 — “No one has ever seen God.” Exodus 33:11 — “The Lord spoke to Moses face to face, as a man speaks to his friend.” Exodus 3:2 also describes the angel of the Lord appearing visibly. Impossible to reconcile.</p>
-      <p class="card-desc-hi" style="display:none">यूहन्ना १:१८ — “परमेश्वर को किसी ने कभी नहीं देखा।” निर्गमन ३३:११ — “यहोवा मूसा से आमने-सामने बातें करता था, जैसे कोई मित्र से बातें करता है।” दोनों बातें एक साथ सही नहीं हो सकतीं।</p>
-      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-trad-vaishnava">New Testament</span></div>
-    </a>
-
   </div>
 </div>
 
@@ -710,7 +1195,7 @@
 <footer>
   <div class="wrap">
     <p class="mantra">Truth does not fear investigation</p>
-    <p>All verses taken directly from the <strong>King James Version and standard English Bibles</strong>. No cherry-picking — the contradictions and immoral teachings are plain in the text. All links verified 2026.</p>
+    <p>All verses taken directly from standard texts. No cherry-picking — the contradictions and teachings are plain in the text. All links verified 2026.</p>
   </div>
 </footer>
 
@@ -719,6 +1204,23 @@
   const sectionTabLabels = {
     'tab-all':         ['All Issues',           'सभी समस्याएँ'],
     'tab-slavery':     ['NT Slavery',           'नया नियम दासता'],
+    'tab-sign':        ['Sign on Cross',        'क्रूस का लेख'],
+    'tab-spirit':      ['Holy Spirit',          'पवित्र आत्मा'],
+    'tab-touch':       ['Touching Jesus',       'यीशु को छूना'],
+    'tab-rooster':     ['The Rooster',          'मुर्गे की बाँग'],
+    'tab-crucifixion': ['Crucifixion Date',     'क्रूस की तिथि'],
+    'tab-jairus':      ['Jairus\'s Daughter',   'याईर की बेटी'],
+    'tab-staff':       ['The Traveling Staff',  'यात्रा में लाठी'],
+    'tab-disciples':   ['Calling Disciples',    'पहले चेलों का बुलावा'],
+    'tab-words':       ['Last Words',           'अंतिम शब्द'],
+    'tab-cross':       ['Carrying Cross',       'क्रूस कौन ले गया?'],
+    'tab-birth':       ['Nativity Conflict',    'जन्म का विरोधाभास'],
+    'tab-temple':      ['Temple Cleansing',     'मंदिर की शुद्धि'],
+    'tab-ascension':   ['The Ascension',        'स्वर्गारोहण'],
+    'tab-tomb_silence':['Empty Tomb Silence',   'स्त्रियों की चुप्पी'],
+    'tab-paul':        ['Paul\'s Vision',       'पौलुस का दर्शन'],
+    'tab-centurion':   ['The Centurion',        'सूबेदार की कहानी'],
+    'tab-fig':         ['The Fig Tree',         'अंजीर का पेड़'],
     'tab-judas':       ['Judas\'s Death',       'यहूदा की मृत्यु'],
     'tab-resurrection':['Resurrection',         'पुनरुत्थान'],
     'tab-genealogy':   ['Genealogies',          'वंशावली'],
@@ -733,9 +1235,9 @@
     'tab-portals':     ['Full Portals',         'सम्पूर्ण पोर्टल'],
   };
   const tradTabLabels = {
-    'trad-all': ['All Sources',   'सभी स्रोत'],
-    'trad-nt':  ['New Testament', 'नया नियम'],
-    'trad-ot':  ['Old Testament', 'पुराना नियम'],
+    'trad-all':    ['All Sources',       'सभी स्रोत'],
+    'trad-nt':     ['New Testament',     'नया नियम'],
+    'trad-ot':     ['Old Testament',     'पुराना नियम'],
   };
 
   function setLang(lang, btn) {
