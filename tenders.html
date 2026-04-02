@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblical Contradictions Hub — Why the Bible is False</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sans:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0905;
+    --surface: #17100a;
+    --card: #1c1409;
+    --border: #352210;
+    --border-hover: #6b4520;
+    --saffron: #f5a623;
+    --saffron-dim: rgba(245,166,35,0.12);
+    --gold-light: #f7d060;
+    --cream: #ede0c8;
+    --cream-dim: #b8a080;
+    --muted: #7a6248;
+    --white: #f5ede0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 100% 50% at 50% 0%, rgba(245,166,35,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 0% 80%, rgba(26,74,122,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 100% 20%, rgba(106,42,138,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+  /* LANG BAR */
+  .lang-bar {
+    display: flex; justify-content: flex-end; align-items: center;
+    padding: 14px 20px 0; position: relative; z-index: 10;
+    max-width: 1060px; margin: 0 auto;
+  }
+  .lang-label { font-size: 12px; color: var(--muted); margin-right: 10px; letter-spacing: 0.08em; }
+  .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .lang-btn {
+    padding: 5px 16px; font-family: 'Jost', sans-serif; font-size: 13px;
+    font-weight: 500; cursor: pointer; border: none;
+    background: var(--surface); color: var(--muted); transition: all 0.15s; letter-spacing: 0.05em;
+  }
+  .lang-btn.active { background: var(--saffron); color: var(--bg); }
+
+  /* HEADER */
+  header { text-align: center; padding: 48px 20px 40px; position: relative; }
+  .om {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 56px; color: var(--saffron); display: block;
+    margin-bottom: 14px; line-height: 1;
+    animation: pulse-glow 4s ease-in-out infinite alternate;
+  }
+  @keyframes pulse-glow {
+    from { text-shadow: 0 0 20px rgba(245,166,35,0.25), 0 0 50px rgba(245,166,35,0.08); }
+    to   { text-shadow: 0 0 35px rgba(245,166,35,0.55), 0 0 80px rgba(245,166,35,0.2); }
+  }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px,5.5vw,58px); font-weight: 600; letter-spacing: 0.02em; line-height: 1.15; }
+  h1 em { color: var(--saffron); font-style: italic; }
+  .sub-en { margin-top: 10px; font-size: 13px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+  .sub-hi { margin-top: 10px; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; color: var(--muted); display: none; }
+  .rule { width: 100px; height: 1px; background: linear-gradient(90deg,transparent,var(--saffron),transparent); margin: 24px auto 0; }
+
+  /* NOTICE */
+  .notice {
+    border: 1px solid var(--border); border-left: 3px solid var(--saffron);
+    background: var(--surface); border-radius: 3px;
+    padding: 16px 20px; margin-bottom: 32px;
+    font-size: 14px; color: var(--cream-dim); line-height: 1.7;
+  }
+  .notice strong { color: var(--saffron); font-weight: 500; }
+
+  /* FILTER ROWS */
+  .filter-group { margin-bottom: 10px; }
+  .filter-label { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs.trad-tabs { margin-bottom: 36px; }
+  .tab {
+    padding: 6px 16px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--muted);
+    font-family: 'Jost', sans-serif; font-size: 12.5px;
+    cursor: pointer; border-radius: 2px; transition: all 0.15s; letter-spacing: 0.06em;
+  }
+  .tab:hover { border-color: var(--border-hover); color: var(--cream-dim); }
+  .tab.active { background: var(--saffron); border-color: var(--saffron); color: var(--bg); font-weight: 600; }
+  .tab.trad-vaishnava.active { background: #4090cc; border-color: #4090cc; }
+  .tab.trad-shaiva.active    { background: #9a4aaa; border-color: #9a4aaa; }
+  .tab.trad-shakta.active    { background: #c05050; border-color: #c05050; }
+  .tab.trad-smarta.active    { background: #1a9b8c; border-color: #1a9b8c; }
+  .tab.trad-shrauta.active   { background: #c08030; border-color: #c08030; }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section.hidden { display: none; }
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  .sec-head h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; white-space: nowrap; color: var(--white); }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+  .sec-tag { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--saffron); border: 1px solid rgba(245,166,35,0.3); padding: 3px 10px; border-radius: 2px; white-space: nowrap; }
+  .sec-desc { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; max-width: 680px; line-height: 1.65; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 20px 20px 16px;
+    text-decoration: none; display: block;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .card.card-hidden { display: none; }
+  .card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent,var(--saffron));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .card:hover { border-color: var(--accent,var(--saffron)); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.5); }
+  .card:hover::after { transform: scaleX(1); }
+  .card-icon { font-size: 22px; margin-bottom: 9px; display: block; line-height: 1; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
+  .card-title-hi { font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 16px; color: var(--saffron); margin-bottom: 3px; display: none; }
+  .card-source { font-size: 11px; color: var(--accent,var(--saffron)); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 9px; }
+  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .card-desc-hi { font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 13px; color: var(--muted); line-height: 1.7; display: none; }
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .badge { font-size: 10.5px; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.05em; }
+  .b-skt  { background: rgba(245,166,35,0.1);  color: #e0ab48; border: 1px solid rgba(245,166,35,0.25); }
+  .b-eng  { background: rgba(237,224,200,0.07); color: #9e8464; border: 1px solid rgba(237,224,200,0.15); }
+  .b-hin  { background: rgba(26,122,110,0.12);  color: #4abaaa; border: 1px solid rgba(26,122,110,0.28); }
+  .b-vs   { background: rgba(184,50,50,0.15);   color: #e07070; border: 1px solid rgba(184,50,50,0.3); }
+  .b-srch { background: rgba(26,74,122,0.2);    color: #60aadd; border: 1px solid rgba(26,74,122,0.4); }
+  .b-trad-vaishnava { background: rgba(64,144,204,0.15); color: #60aadd; border: 1px solid rgba(64,144,204,0.35); }
+  .b-trad-shaiva    { background: rgba(154,74,170,0.15); color: #c080dd; border: 1px solid rgba(154,74,170,0.35); }
+  .b-trad-shakta    { background: rgba(192,80,80,0.15);  color: #e07070; border: 1px solid rgba(192,80,80,0.35); }
+  .b-trad-smarta    { background: rgba(26,155,140,0.15); color: #4abaaa; border: 1px solid rgba(26,155,140,0.35); }
+  .b-trad-shrauta   { background: rgba(192,128,48,0.15); color: #d4943a; border: 1px solid rgba(192,128,48,0.35); }
+
+  /* accent colors */
+  .a-saffron { --accent: #f5a623; }
+  .a-red     { --accent: #c05050; }
+  .a-teal    { --accent: #1a9b8c; }
+  .a-blue    { --accent: #4090cc; }
+  .a-green   { --accent: #48a068; }
+  .a-purple  { --accent: #9a4aaa; }
+
+  /* empty state */
+  .no-results {
+    display: none; text-align: center; padding: 40px 20px;
+    color: var(--muted); font-size: 14px; letter-spacing: 0.05em;
+    border: 1px dashed var(--border); border-radius: 4px; margin-bottom: 30px;
+  }
+  .no-results.visible { display: block; }
+
+  /* PORTALS */
+  .portal-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(190px,1fr)); gap: 10px; }
+  .portal-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    padding: 14px 16px; text-decoration: none; display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .portal-card:hover { border-color: var(--saffron); background: var(--card); }
+  .pi { font-size: 20px; flex-shrink: 0; }
+  .pn { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .pn-hi { font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 13px; color: var(--saffron); display: none; margin-bottom: 2px; }
+  .pd { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 28px 20px; text-align: center; color: var(--muted); font-size: 13px; position: relative; z-index: 1; line-height: 1.8; }
+  footer .mantra { font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 15px; color: var(--cream-dim); margin-bottom: 8px; }
+  footer strong { color: var(--saffron); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .portal-grid { grid-template-columns: 1fr 1fr; }
+    .sec-tag { display: none; }
+    h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <span class="lang-label">Language / भाषा</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('hi',this)">हिंदी</button>
+  </div>
+</div>
+
+<header>
+  <span class="om">✝️</span>
+  <h1>Bible <em>Falsehood</em> Hub</h1>
+  <p class="sub-en">Textual contradictions · Immoral teachings · Direct verse analysis</p>
+  <p class="sub-hi" style="display:none">पाठ्य विरोधाभास · अनैतिक शिक्षाएँ · प्रत्यक्ष श्लोक विश्लेषण</p>
+  <div class="rule"></div>
+</header>
+
+<div class="wrap">
+
+<div class="notice">
+  <span class="t-en"><strong>No apologetics.</strong> Every verse is quoted directly from the <strong>King James Version and standard English Bibles</strong> — no reinterpretation, no modern excuses. All contradictions verified 2026.</span>
+  <span class="t-hi" style="display:none"><strong>कोई बचाव नहीं।</strong> प्रत्येक आयत <strong>किंग जेम्स संस्करण और मानक बाइबल</strong> से सीधे उद्धृत — कोई नया अर्थ, कोई आधुनिक बहाना नहीं। सभी विरोधाभास २०२६ में सत्यापित।</span>
+</div>
+
+<!-- FILTER ROW 1: Issue type -->
+<div class="filter-group">
+  <div class="filter-label t-en">Issue Type</div>
+  <div class="filter-label t-hi" style="display:none">समस्या का प्रकार</div>
+  <div class="tabs">
+    <button class="tab active" id="tab-all"     onclick="filterSection('all',this)">All Issues</button>
+    <button class="tab"        id="tab-slavery" onclick="filterSection('slavery',this)">NT Slavery</button>
+    <button class="tab"        id="tab-eden"    onclick="filterSection('eden',this)">Eden Deception</button>
+    <button class="tab"        id="tab-creation"onclick="filterSection('creation',this)">Creation Order</button>
+    <button class="tab"        id="tab-visibility" onclick="filterSection('visibility',this)">Seeing God</button>
+    <button class="tab"        id="tab-portals" onclick="filterSection('portals',this)">Full Portals</button>
+  </div>
+</div>
+
+<!-- FILTER ROW 2: Testament -->
+<div class="filter-group">
+  <div class="filter-label t-en">Testament / Source</div>
+  <div class="filter-label t-hi" style="display:none">नियम / स्रोत</div>
+  <div class="tabs trad-tabs">
+    <button class="tab active"        id="trad-all"       onclick="filterTrad('all',this)">All Sources</button>
+    <button class="tab trad-vaishnava" id="trad-nt"       onclick="filterTrad('nt',this)">New Testament</button>
+    <button class="tab trad-shaiva"    id="trad-ot"       onclick="filterTrad('ot',this)">Old Testament</button>
+  </div>
+</div>
+
+<div class="no-results" id="no-results">
+  <span class="t-en">No issues match the current filters — try a different combination.</span>
+  <span class="t-hi" style="display:none">वर्तमान फ़िल्टर से कोई समस्या नहीं मिली — कृपया अन्य संयोजन आज़माएँ।</span>
+</div>
+
+<!-- ════ NT SLAVERY ════ -->
+<div class="section" data-s="slavery">
+  <div class="sec-head">
+    <h2><span class="t-en">New Testament Slavery Endorsement</span><span class="t-hi" style="display:none">नए नियम में दासता समर्थन</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Clear moral failure</span>
+  </div>
+  <p class="sec-desc t-en">The New Testament repeatedly commands slaves to obey their earthly masters “with fear and trembling” and treats slavery as compatible with Christian living. These are not Old Testament laws — they are direct instructions to the early Church.</p>
+  <p class="sec-desc t-hi" style="display:none">नया नियम दासों को बार-बार आदेश देता है कि वे अपने भौतिक स्वामियों की “भय और काँपते हुए” आज्ञा मानें और दासता को ईसाई जीवन के अनुकूल मानता है। ये पुराने नियम के नियम नहीं — प्रारंभिक चर्च को दिए गए प्रत्यक्ष निर्देश हैं।</p>
+  <div class="grid">
+
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">⛓️</span>
+      <div class="card-title">Ephesians 6:5</div>
+      <div class="card-title-hi" style="display:none">इफिसियों ६:५</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Servants, be obedient to them that are your masters according to the flesh, with fear and trembling, in singleness of your heart, as unto Christ;" — The Bible explicitly commands slaves to obey masters as if obeying Christ.</p>
+      <p class="card-desc-hi" style="display:none">"दासो, अपने शरीर के अनुसार स्वामियों की आज्ञा मानो, भय और काँपते हुए, हृदय की सच्चाई से, जैसे मसीह की आज्ञा मानते हो।" — बाइबल दासों को स्वामियों की आज्ञा मसीह की तरह मानने का आदेश देती है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-red">Promotes slavery</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">⛓️</span>
+      <div class="card-title">Colossians 3:22</div>
+      <div class="card-title-hi" style="display:none">कुलुस्सियों ३:२२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Slaves, obey your earthly masters in everything you do. Try to please them all the time, not just when they are watching you. Serve them sincerely because of your reverent fear of the Lord." — Slavery is framed as spiritual duty.</p>
+      <p class="card-desc-hi" style="display:none">"दासो, अपने भौतिक स्वामियों की हर बात में आज्ञा मानो। उन्हें हर समय प्रसन्न रखो, न केवल जब वे देख रहे हों। प्रभु के भय से सच्चाई से उनकी सेवा करो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-red">Promotes slavery</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">⛓️</span>
+      <div class="card-title">1 Timothy 6:1</div>
+      <div class="card-title-hi" style="display:none">१ तीमुथियुस ६:१</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Let as many servants as are under the yoke count their own masters worthy of all honour, that the name of God and his doctrine be not blasphemed." — Honoring slave-masters protects God’s reputation.</p>
+      <p class="card-desc-hi" style="display:none">"जितने दास जुआ के नीचे हैं, वे अपने स्वामियों को सब प्रकार का सम्मान दें, जिससे परमेश्वर का नाम और उसका उपदेश निन्दित न हो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-red">Promotes slavery</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">⛓️</span>
+      <div class="card-title">Titus 2:9</div>
+      <div class="card-title-hi" style="display:none">तीतुस २:९</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Exhort servants to be obedient unto their own masters, and to please them well in all things; not answering again;" — Slaves must not talk back; total submission is required.</p>
+      <p class="card-desc-hi" style="display:none">"दासों को समझाओ कि वे अपने स्वामियों की आज्ञा मानें और हर बात में उन्हें प्रसन्न रखें; जवाब न दें।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-red">Promotes slavery</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="nt">
+      <span class="card-icon">⛓️</span>
+      <div class="card-title">1 Peter 2:18</div>
+      <div class="card-title-hi" style="display:none">१ पतरस २:१८</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Servants, be subject to your masters with all fear; not only to the good and gentle, but also to the froward." — Obey even cruel masters. This is the clearest endorsement of slavery in the entire Bible.</p>
+      <p class="card-desc-hi" style="display:none">"दासो, अपने स्वामियों के अधीन रहो, सब प्रकार का भय रखते हुए; केवल अच्छे और सौम्य स्वामियों के ही नहीं, बल्कि कठोर स्वामियों के भी।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-red">Promotes slavery</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ EDEN DECEPTION ════ -->
+<div class="section" data-s="eden">
+  <div class="sec-head">
+    <h2><span class="t-en">Eden Deception &amp; Immortality Lie</span><span class="t-hi" style="display:none">ईडन धोखा और अमरता का झूठ</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Immediate hypocrisy</span>
+  </div>
+  <p class="sec-desc t-en">From its very first pages the Bible lies about death and then contradicts itself about punishment. God threatens immediate death for eating from the tree of knowledge — but never carries it out.</p>
+  <p class="sec-desc t-hi" style="display:none">पहले पन्नों से ही बाइबल मृत्यु के बारे में झूठ बोलती है और फिर दंड के बारे में खुद से विरोधाभास करती है। परमेश्वर ज्ञान के वृक्ष से खाने पर तुरंत मृत्यु का धमका देता है — लेकिन कभी पूरा नहीं करता।</p>
+  <div class="grid">
+
+    <a href="#" class="card a-purple" data-trad="ot">
+      <span class="card-icon">🌳</span>
+      <div class="card-title">Genesis 2:16-17 + 3:4-5, 3:22-24</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति २:१६-१७ + ३:४-५, ३:२२-२४</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">God says: “In the day that thou eatest thereof thou shalt surely die.” Serpent says they will not die but gain knowledge. They eat. God then admits: “The man is become as one of us… lest he put forth his hand, and take also of the tree of life, and eat, and live for ever.” They are expelled — not killed. Immediate lie and hypocrisy at the start of the Bible.</p>
+      <p class="card-desc-hi" style="display:none">परमेश्वर कहता है: “जिस दिन तू उसमें से खाएगा, निश्चय मर जाएगा।” साँप कहता है वे नहीं मरेंगे बल्कि ज्ञान प्राप्त करेंगे। वे खाते हैं। परमेश्वर फिर स्वीकार करता है: “मनुष्य हममें से एक हो गया… कहीं ऐसा न हो कि वह जीवन के वृक्ष का भी फल ले खाए और सदा जीवित रहे।” उन्हें निकाल दिया गया — मार नहीं दिया गया। बाइबल की शुरुआत में तुरंत झूठ और कुटिलता।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-red">Divine lie</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ CREATION ORDER ════ -->
+<div class="section" data-s="creation">
+  <div class="sec-head">
+    <h2><span class="t-en">Genesis Creation Order Contradictions</span><span class="t-hi" style="display:none">उत्पत्ति में सृष्टि क्रम का विरोधाभास</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Two conflicting accounts</span>
+  </div>
+  <p class="sec-desc t-en">The Bible gives two completely different creation sequences in the very first two chapters — a clear internal contradiction.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल पहले दो अध्यायों में ही दो पूरी तरह अलग सृष्टि क्रम देती है — स्पष्ट आंतरिक विरोधाभास।</p>
+  <div class="grid">
+
+    <a href="#" class="card a-blue" data-trad="ot">
+      <span class="card-icon">🌍</span>
+      <div class="card-title">Genesis 1:25-27 vs Genesis 2:18-22</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति १:२५-२७ बनाम २:१८-२२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">Chapter 1: Animals created before humans; male and female created together on the sixth day. Chapter 2: Man created first, then animals are formed to help him, then woman is made from his rib. Two mutually exclusive timelines in the same book.</p>
+      <p class="card-desc-hi" style="display:none">अध्याय १: जानवर मनुष्य से पहले बनाए गए; छठे दिन पुरुष और स्त्री एक साथ। अध्याय २: पहले पुरुष, फिर जानवर उसकी सहायता के लिए बनाए गए, फिर उसकी पसली से स्त्री बनाई गई। एक ही पुस्तक में दो परस्पर विरोधी समयरेखाएँ।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ VISIBILITY OF GOD ════ -->
+<div class="section" data-s="visibility">
+  <div class="sec-head">
+    <h2><span class="t-en">Seeing God Contradictions</span><span class="t-hi" style="display:none">परमेश्वर को देखने का विरोधाभास</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Direct self-contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The Bible cannot agree on whether humans can see God face-to-face.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल इस बात पर सहमत नहीं हो पाती कि मनुष्य परमेश्वर को आमने-सामने देख सकता है या नहीं।</p>
+  <div class="grid">
+
+    <a href="#" class="card a-green" data-trad="ot">
+      <span class="card-icon">👁️</span>
+      <div class="card-title">John 1:18 vs Exodus 33:11</div>
+      <div class="card-title-hi" style="display:none">यूहन्ना १:१८ बनाम निर्गमन ३३:११</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">John 1:18 — “No one has ever seen God.” Exodus 33:11 — “The Lord spoke to Moses face to face, as a man speaks to his friend.” Exodus 3:2 also describes the angel of the Lord appearing visibly in the burning bush. Impossible to reconcile.</p>
+      <p class="card-desc-hi" style="display:none">यूहन्ना १:१८ — “परमेश्वर को किसी ने कभी नहीं देखा।” निर्गमन ३३:११ — “यहोवा मूसा से आमने-सामने बातें करता था, जैसे कोई मित्र से बातें करता है।” निर्गमन ३:२ में भी यहोवा के दूत जलते झाड़ी में दिखाई दिया। दोनों बातें एक साथ सही नहीं हो सकतीं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old + New</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ PORTALS ════ -->
+<div class="section" data-s="portals">
+  <div class="sec-head">
+    <h2><span class="t-en">Full Portals</span><span class="t-hi" style="display:none">सम्पूर्ण पोर्टल</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">Start Here for Full Analysis</span>
+  </div>
+  <p class="sec-desc t-en">Entire libraries of biblical criticism — direct verse-by-verse contradictions, historical analysis, and scholarly debunking. Best for deep study.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल आलोचना के पूरे पुस्तकालय — श्लोक-दर-श्लोक विरोधाभास, ऐतिहासिक विश्लेषण और विद्वत् खंडन। गहन अध्ययन के लिए सर्वोत्तम।</p>
+
+  <div class="portal-grid">
+    <a href="https://skepticsannotatedbible.com/" target="_blank" class="portal-card">
+      <span class="pi">📖</span>
+      <div class="pt">
+        <div class="pn t-en">Skeptic's Annotated Bible</div>
+        <div class="pn-hi t-hi" style="display:none">संशयवादी एनोटेटेड बाइबल</div>
+        <div class="pd">Every contradiction, cruelty &amp; absurdity marked</div>
+      </div>
+    </a>
+    <a href="https://infidels.org/" target="_blank" class="portal-card">
+      <span class="pi">🔍</span>
+      <div class="pt">
+        <div class="pn t-en">Internet Infidels</div>
+        <div class="pn-hi t-hi" style="display:none">इंटरनेट इनफिडेल्स</div>
+        <div class="pd">Scholarly library of Bible criticism</div>
+      </div>
+    </a>
+    <a href="https://www.evilbible.com/" target="_blank" class="portal-card">
+      <span class="pi">⚖️</span>
+      <div class="pt">
+        <div class="pn t-en">EvilBible.com</div>
+        <div class="pn-hi t-hi" style="display:none">ईविल बाइबल</div>
+        <div class="pd">Immoral teachings &amp; slavery verses catalogued</div>
+      </div>
+    </a>
+    <a href="https://www.biblegateway.com/" target="_blank" class="portal-card">
+      <span class="pi">📜</span>
+      <div class="pt">
+        <div class="pn t-en">BibleGateway (for verification)</div>
+        <div class="pn-hi t-hi" style="display:none">बाइबल गेटवे</div>
+        <div class="pd">Read every verse in multiple translations</div>
+      </div>
+    </a>
+    <a href="https://www.skeptic.com/" target="_blank" class="portal-card">
+      <span class="pi">🧪</span>
+      <div class="pt">
+        <div class="pn t-en">Skeptic Magazine Bible Section</div>
+        <div class="pn-hi t-hi" style="display:none">स्केप्टिक पत्रिका</div>
+        <div class="pd">Scientific &amp; historical debunking</div>
+      </div>
+    </a>
+    <a href="https://rationalwiki.org/wiki/Biblical_contradictions" target="_blank" class="portal-card">
+      <span class="pi">📋</span>
+      <div class="pt">
+        <div class="pn t-en">RationalWiki — Contradictions</div>
+        <div class="pn-hi t-hi" style="display:none">रेशनल विकी</div>
+        <div class="pd">Comprehensive list with sources</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <p class="mantra">Truth does not fear investigation</p>
+    <p>All verses taken directly from the <strong>King James Version and standard English Bibles</strong>. No cherry-picking — the contradictions and immoral teachings are plain in the text. All links verified 2026.</p>
+  </div>
+</footer>
+
+<script>
+  // ── LANGUAGE TOGGLE ──
+  const sectionTabLabels = {
+    'tab-all':     ['All Issues',           'सभी समस्याएँ'],
+    'tab-slavery': ['NT Slavery',           'नया नियम दासता'],
+    'tab-eden':    ['Eden Deception',       'ईडन धोखा'],
+    'tab-creation':['Creation Order',       'सृष्टि क्रम'],
+    'tab-visibility':['Seeing God',         'परमेश्वर को देखना'],
+    'tab-portals': ['Full Portals',         'सम्पूर्ण पोर्टल'],
+  };
+  const tradTabLabels = {
+    'trad-all': ['All Sources',  'सभी स्रोत'],
+    'trad-nt':  ['New Testament', 'नया नियम'],
+    'trad-ot':  ['Old Testament', 'पुराना नियम'],
+  };
+
+  function setLang(lang, btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const hi = lang === 'hi';
+
+    document.querySelectorAll('.t-en').forEach(el => el.style.display = hi ? 'none' : '');
+    document.querySelectorAll('.t-hi').forEach(el => el.style.display = hi ? '' : 'none');
+
+    document.querySelectorAll('.card-title').forEach(el => el.style.display = hi ? 'none' : '');
+    document.querySelectorAll('.card-title-hi').forEach(el => el.style.display = hi ? 'block' : 'none');
+
+    document.querySelectorAll('.card-desc').forEach(el => el.style.display = hi ? 'none' : '');
+    document.querySelectorAll('.card-desc-hi').forEach(el => el.style.display = hi ? 'block' : 'none');
+
+    document.querySelectorAll('.sub-en').forEach(el => el.style.display = hi ? 'none' : '');
+    document.querySelectorAll('.sub-hi').forEach(el => el.style.display = hi ? '' : 'none');
+
+    for (const [id, [en, h]] of Object.entries(sectionTabLabels)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = hi ? h : en;
+    }
+    for (const [id, [en, h]] of Object.entries(tradTabLabels)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = hi ? h : en;
+    }
+  }
+
+  // ── FILTER STATE ──
+  let activeSection = 'all';
+  let activeTrad    = 'all';
+
+  function applyFilters() {
+    let anyVisible = false;
+
+    document.querySelectorAll('.section').forEach(sec => {
+      const sMatch = activeSection === 'all' || sec.dataset.s === activeSection;
+
+      if (sec.dataset.s === 'portals') {
+        sec.classList.toggle('hidden', !sMatch);
+        if (sMatch) anyVisible = true;
+        return;
+      }
+
+      if (!sMatch) { sec.classList.add('hidden'); return; }
+
+      let secHasVisible = false;
+      sec.querySelectorAll('.card').forEach(card => {
+        const trads = (card.dataset.trad || '').split(' ');
+        const tMatch = activeTrad === 'all' || trads.includes(activeTrad);
+        card.classList.toggle('card-hidden', !tMatch);
+        if (tMatch) { secHasVisible = true; anyVisible = true; }
+      });
+
+      sec.classList.toggle('hidden', !secHasVisible);
+    });
+
+    document.getElementById('no-results').classList.toggle('visible', !anyVisible);
+  }
+
+  // ── SECTION FILTER ──
+  function filterSection(key, btn) {
+    document.querySelectorAll('.tabs:not(.trad-tabs) .tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeSection = key;
+    applyFilters();
+  }
+
+  // ── TRADITION FILTER ──
+  function filterTrad(key, btn) {
+    document.querySelectorAll('.trad-tabs .tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeTrad = key;
+    applyFilters();
+  }
+</script>
+
+</body>
+</html>
