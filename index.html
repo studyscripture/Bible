@@ -162,7 +162,29 @@
   .a-green   { --accent: #48a068; }
   .a-purple  { --accent: #9a4aaa; }
 
-  /* empty state */
+  /* CATEGORY FILTER TABS */
+  .cat-sci.active  { background: #2a6e3e; border-color: #2a6e3e; color: #fff; }
+  .cat-con.active  { background: #8b3a3a; border-color: #8b3a3a; color: #fff; }
+  .cat-his.active  { background: #5a4a1a; border-color: #b8860b; color: #ffd700; }
+  .cat-mor.active  { background: #5a1a3a; border-color: #9a1a6a; color: #ffaadd; }
+  .cat-sci:not(.active):hover  { border-color: #2a6e3e; color: #5dbb7e; }
+  .cat-con:not(.active):hover  { border-color: #8b3a3a; color: #e07070; }
+  .cat-his:not(.active):hover  { border-color: #b8860b; color: #ffd700; }
+  .cat-mor:not(.active):hover  { border-color: #9a1a6a; color: #ffaadd; }
+
+  /* CAT BADGE STRIP on cards */
+  .cat-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 7px; border-radius: 2px; text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .cb-sci { background: rgba(42,110,62,0.18); color: #5dbb7e; border: 1px solid rgba(42,110,62,0.4); }
+  .cb-con { background: rgba(139,58,58,0.18); color: #e07070; border: 1px solid rgba(139,58,58,0.4); }
+  .cb-his { background: rgba(184,134,11,0.18); color: #ffd700; border: 1px solid rgba(184,134,11,0.4); }
+  .cb-mor { background: rgba(154,26,106,0.18); color: #ffaadd; border: 1px solid rgba(154,26,106,0.4); }
+
+
   .no-results {
     display: none; text-align: center; padding: 40px 20px;
     color: var(--muted); font-size: 14px; letter-spacing: 0.05em;
@@ -279,6 +301,26 @@
     <button class="tab"        id="tab-creation"     onclick="filterSection('creation',this)">Creation Order</button>
     <button class="tab"        id="tab-visibility"   onclick="filterSection('visibility',this)">Seeing God</button>
     <button class="tab"        id="tab-portals"      onclick="filterSection('portals',this)">Full Portals</button>
+    <button class="tab"        id="tab-snakes"       onclick="filterSection('snakes',this)">Talking Serpent</button>
+    <button class="tab"        id="tab-pi"           onclick="filterSection('pi',this)">Bible's Wrong Pi</button>
+    <button class="tab"        id="tab-bats"         onclick="filterSection('bats',this)">Bats as Birds</button>
+    <button class="tab"        id="tab-mustard"      onclick="filterSection('mustard',this)">Mustard Seed</button>
+    <button class="tab"        id="tab-stars"        onclick="filterSection('stars',this)">Stars Will Fall</button>
+    <button class="tab"        id="tab-hares"        onclick="filterSection('hares',this)">Hares Chew Cud</button>
+    <button class="tab"        id="tab-flood"        onclick="filterSection('flood',this)">Noah's Flood</button>
+    <button class="tab"        id="tab-babel"        onclick="filterSection('babel',this)">Tower of Babel</button>
+    <button class="tab"        id="tab-sun"          onclick="filterSection('sun',this)">Sun Stands Still</button>
+    <button class="tab"        id="tab-solomon"      onclick="filterSection('solomon',this)">Solomon's Horses</button>
+    <button class="tab"        id="tab-insects"      onclick="filterSection('insects',this)">Four-Legged Insects</button>
+    <button class="tab"        id="tab-prayer"       onclick="filterSection('prayer',this)">Prayer Promised</button>
+    <button class="tab"        id="tab-woman"        onclick="filterSection('woman',this)">Women Must Be Silent</button>
+    <button class="tab"        id="tab-hell"         onclick="filterSection('hell',this)">Hell Contradiction</button>
+    <button class="tab"        id="tab-baptism"      onclick="filterSection('baptism',this)">Baptism Required?</button>
+    <button class="tab"        id="tab-murder"       onclick="filterSection('murder',this)">God Commands Murder</button>
+    <button class="tab"        id="tab-unicorns"     onclick="filterSection('unicorns',this)">Unicorns in the Bible</button>
+    <button class="tab"        id="tab-divorce"      onclick="filterSection('divorce',this)">Divorce Contradiction</button>
+    <button class="tab"        id="tab-sabbath"      onclick="filterSection('sabbath',this)">Sabbath Day</button>
+    <button class="tab"        id="tab-age"          onclick="filterSection('age',this)">Jesus's Age</button>
   </div>
 </div>
 
@@ -293,16 +335,29 @@
   </div>
 </div>
 
+<!-- FILTER ROW 3: Error Category -->
+<div class="filter-group">
+  <div class="filter-label t-en">Error Category</div>
+  <div class="filter-label t-hi" style="display:none">त्रुटि श्रेणी</div>
+  <div class="tabs cat-tabs">
+    <button class="tab active cat-all" id="cat-all"  onclick="filterCat('all',this)">All Categories</button>
+    <button class="tab cat-sci"        id="cat-sci"  onclick="filterCat('sci',this)">🔬 Scientific Errors</button>
+    <button class="tab cat-con"        id="cat-con"  onclick="filterCat('con',this)">⚡ Internal Contradictions</button>
+    <button class="tab cat-his"        id="cat-his"  onclick="filterCat('his',this)">📜 Historical Blunders</button>
+    <button class="tab cat-mor"        id="cat-mor"  onclick="filterCat('mor',this)">⚖️ Moral Failures</button>
+  </div>
+</div>
+
 <div class="no-results" id="no-results">
   <span class="t-en">No issues match the current filters — try a different combination.</span>
   <span class="t-hi" style="display:none">वर्तमान फ़िल्टर से कोई समस्या नहीं मिली — कृपया अन्य संयोजन आज़माएँ।</span>
 </div>
 
 <!-- ════ NT SLAVERY (FULL RESTORED CARDS) ════ -->
-<div class="section" data-s="slavery">
+<div class="section" data-s="slavery" data-cat="mor">
   <div class="sec-head">
     <h2><span class="t-en">New Testament Slavery Endorsement</span><span class="t-hi" style="display:none">नए नियम में दासता समर्थन</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-mor">⚖️ Moral Failure</span>
     <span class="sec-tag">Clear moral failure</span>
   </div>
   <p class="sec-desc t-en">The New Testament repeatedly commands slaves to obey their earthly masters “with fear and trembling” and treats slavery as compatible with Christian living. These are not Old Testament laws — they are direct instructions to the early Church.</p>
@@ -357,10 +412,10 @@
 </div>
 
 <!-- ════ THE SIGN ON THE CROSS ════ -->
-<div class="section" data-s="sign">
+<div class="section" data-s="sign" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Sign on the Cross</span><span class="t-hi" style="display:none">क्रूस पर लिखा हुआ लेख</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Textual Contradiction</span>
   </div>
   <p class="sec-desc t-en">What exactly was written on the sign above Jesus' head? All four Gospels claim to quote the exact inscription, yet all four give different words.</p>
@@ -388,10 +443,10 @@
 </div>
 
 <!-- ════ RECEIVING THE HOLY SPIRIT ════ -->
-<div class="section" data-s="spirit">
+<div class="section" data-s="spirit" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Receiving the Holy Spirit</span><span class="t-hi" style="display:none">पवित्र आत्मा का आगमन</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Chronological Error</span>
   </div>
   <p class="sec-desc t-en">When did the disciples receive the Holy Spirit? Did it happen on the very day of his resurrection via his breath, or 50 days later at Pentecost?</p>
@@ -419,10 +474,10 @@
 </div>
 
 <!-- ════ TOUCHING THE RISEN JESUS ════ -->
-<div class="section" data-s="touch">
+<div class="section" data-s="touch" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Touching the Risen Jesus</span><span class="t-hi" style="display:none">पुनर्जीवित यीशु को छूना</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Narrative Contradiction</span>
   </div>
   <p class="sec-desc t-en">Matthew explicitly says the women grabbed Jesus's feet immediately upon seeing him. John explicitly says Jesus forbade Mary from touching him because he hadn't ascended yet.</p>
@@ -450,10 +505,10 @@
 </div>
 
 <!-- ════ THE ROOSTER's CROW ════ -->
-<div class="section" data-s="rooster">
+<div class="section" data-s="rooster" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Peter's Denial & The Rooster</span><span class="t-hi" style="display:none">पतरस का इनकार और मुर्गा</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Chronological Error</span>
   </div>
   <p class="sec-desc t-en">In Mark, Jesus specifically says Peter will deny him before the rooster crows *twice*. In all other gospels, it's just before the rooster crows *once*.</p>
@@ -481,10 +536,10 @@
 </div>
 
 <!-- ════ JAIRUS'S DAUGHTER ════ -->
-<div class="section" data-s="jairus">
+<div class="section" data-s="jairus" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Jairus's Daughter: Dead or Dying?</span><span class="t-hi" style="display:none">याईर की बेटी: मृत या मरणासन्न?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Narrative Contradiction</span>
   </div>
   <p class="sec-desc t-en">When Jairus approached Jesus, was his daughter already dead, or was she just very sick? The Gospel authors altered the narrative, creating a direct conflict in the timeline.</p>
@@ -512,10 +567,10 @@
 </div>
 
 <!-- ════ THE TRAVELING STAFF ════ -->
-<div class="section" data-s="staff">
+<div class="section" data-s="staff" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">To Take a Staff or Not?</span><span class="t-hi" style="display:none">यात्रा में लाठी ले जाएं या नहीं?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Instructional Clash</span>
   </div>
   <p class="sec-desc t-en">When Jesus sends out his disciples to preach, what exactly does he tell them to bring? The gospels give diametrically opposed instructions regarding a walking staff.</p>
@@ -543,10 +598,10 @@
 </div>
 
 <!-- ════ CALLING THE FIRST DISCIPLES ════ -->
-<div class="section" data-s="disciples">
+<div class="section" data-s="disciples" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Calling the First Disciples</span><span class="t-hi" style="display:none">पहले चेलों का बुलावा</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Historical Inconsistency</span>
   </div>
   <p class="sec-desc t-en">How did Jesus meet his first core disciples, Peter and Andrew? The Synoptic Gospels set the scene at the Sea of Galilee, but John claims they were originally disciples of John the Baptist.</p>
@@ -574,10 +629,10 @@
 </div>
 
 <!-- ════ EDEN DECEPTION (ORIGINAL RESTORED PARAGRAPH) ════ -->
-<div class="section" data-s="eden">
+<div class="section" data-s="eden" data-cat="his">
   <div class="sec-head">
     <h2><span class="t-en">Eden Deception &amp; Immortality Lie</span><span class="t-hi" style="display:none">ईडन धोखा और अमरता का झूठ</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
     <span class="sec-tag">Immediate hypocrisy</span>
   </div>
   <p class="sec-desc t-en">From its very first pages the Bible lies about death and then contradicts itself about punishment. God threatens immediate death for eating from the tree of knowledge — but never carries it out.</p>
@@ -596,10 +651,10 @@
 </div>
 
 <!-- ════ CREATION ORDER (ORIGINAL RESTORED PARAGRAPH) ════ -->
-<div class="section" data-s="creation">
+<div class="section" data-s="creation" data-cat="sci">
   <div class="sec-head">
     <h2><span class="t-en">Genesis Creation Order Contradictions</span><span class="t-hi" style="display:none">उत्पत्ति में सृष्टि क्रम का विरोधाभास</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
     <span class="sec-tag">Two conflicting accounts</span>
   </div>
   <p class="sec-desc t-en">The Bible gives two completely different creation sequences in the very first two chapters — a clear internal contradiction.</p>
@@ -618,10 +673,10 @@
 </div>
 
 <!-- ════ VISIBILITY OF GOD (ORIGINAL RESTORED PARAGRAPH) ════ -->
-<div class="section" data-s="visibility">
+<div class="section" data-s="visibility" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Seeing God Contradictions</span><span class="t-hi" style="display:none">परमेश्वर को देखने का विरोधाभास</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct self-contradiction</span>
   </div>
   <p class="sec-desc t-en">The Bible cannot agree on whether humans can see God face-to-face.</p>
@@ -640,10 +695,10 @@
 </div>
 
 <!-- ════ JESUS'S LAST WORDS ════ -->
-<div class="section" data-s="words">
+<div class="section" data-s="words" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Jesus's Last Words on the Cross</span><span class="t-hi" style="display:none">क्रूस पर यीशु के अंतिम शब्द</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Authorial Theology Conflict</span>
   </div>
   <p class="sec-desc t-en">The Gospels record three completely different final statements of Jesus before he dies, tailored to each author's specific theological view of who Jesus was.</p>
@@ -662,10 +717,10 @@
 </div>
 
 <!-- ════ THE FIG TREE ════ -->
-<div class="section" data-s="fig">
+<div class="section" data-s="fig" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Withering of the Fig Tree</span><span class="t-hi" style="display:none">अंजीर के पेड़ का सूखना</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Chronological Error</span>
   </div>
   <p class="sec-desc t-en">Matthew and Mark fundamentally disagree on the timeline of Jesus cursing the fig tree and when the disciples noticed it withered.</p>
@@ -684,10 +739,10 @@
 </div>
 
 <!-- ════ NATIVITY CONFLICT ════ -->
-<div class="section" data-s="birth">
+<div class="section" data-s="birth" data-cat="his">
   <div class="sec-head">
     <h2><span class="t-en">The Nativity Timeline</span><span class="t-hi" style="display:none">जन्म की कहानी का विरोधाभास</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
     <span class="sec-tag">Historical Impossibility</span>
   </div>
   <p class="sec-desc t-en">Matthew and Luke give two entirely different, historically irreconcilable stories of Jesus's birth. King Herod died in 4 BCE, while Quirinius's census was in 6 CE—a 10-year gap making it impossible for both stories to be true.</p>
@@ -715,10 +770,10 @@
 </div>
 
 <!-- ════ CRUCIFIXION DATE ════ -->
-<div class="section" data-s="crucifixion">
+<div class="section" data-s="crucifixion" data-cat="his">
   <div class="sec-head">
     <h2><span class="t-en">The Day of the Crucifixion</span><span class="t-hi" style="display:none">क्रूस पर चढ़ाने का दिन</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
     <span class="sec-tag">Historical & Theological Contradiction</span>
   </div>
   <p class="sec-desc t-en">The Synoptic Gospels state Jesus ate the Passover meal (the Last Supper) and was crucified the *following* day. However, the Gospel of John explicitly alters the timeline so Jesus is crucified *before* the Passover meal, at the exact time the Passover lambs are being slaughtered in the temple, to create a theological metaphor.</p>
@@ -746,10 +801,10 @@
 </div>
 
 <!-- ════ CARRYING THE CROSS ════ -->
-<div class="section" data-s="cross">
+<div class="section" data-s="cross" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Who Carried the Cross?</span><span class="t-hi" style="display:none">क्रूस किसने उठाया?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Historical & Textual Clash</span>
   </div>
   <p class="sec-desc t-en">The Synoptic Gospels explicitly state that a passerby, Simon of Cyrene, was compelled to carry Jesus's cross. The Gospel of John, however, insists Jesus carried his own cross entirely by himself, deliberately omitting Simon.</p>
@@ -777,10 +832,10 @@
 </div>
 
 <!-- ════ THE TEMPLE CLEANSING ════ -->
-<div class="section" data-s="temple">
+<div class="section" data-s="temple" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Temple Cleansing Timeline</span><span class="t-hi" style="display:none">मंदिर की शुद्धि का समय</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Chronological Breakdown</span>
   </div>
   <p class="sec-desc t-en">Did Jesus cleanse the temple at the very end of his ministry, leading directly to his arrest, or at the very beginning of his ministry? The Synoptic Gospels and John fundamentally disagree on when this major historical event occurred.</p>
@@ -808,10 +863,10 @@
 </div>
 
 <!-- ════ THE ASCENSION TIMELINE ════ -->
-<div class="section" data-s="ascension">
+<div class="section" data-s="ascension" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Ascension Timeline</span><span class="t-hi" style="display:none">स्वर्गारोहण की समय-रेखा</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Authorial Contradiction</span>
   </div>
   <p class="sec-desc t-en">When and where did Jesus ascend to heaven? This is a notoriously irreconcilable contradiction because it occurs between the Gospel of Luke and the Book of Acts—two books traditionally attributed to the exact same author.</p>
@@ -839,10 +894,10 @@
 </div>
 
 <!-- ════ EMPTY TOMB SILENCE ════ -->
-<div class="section" data-s="tomb_silence">
+<div class="section" data-s="tomb_silence" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Did the Women Tell Anyone?</span><span class="t-hi" style="display:none">क्या स्त्रियों ने किसी को बताया?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Internal Conflict</span>
   </div>
   <p class="sec-desc t-en">The original ending of the Gospel of Mark states the women fled the empty tomb and told absolutely no one because they were afraid. Matthew and Luke deliberately rewrite this scene to say they immediately ran to tell the disciples.</p>
@@ -870,10 +925,10 @@
 </div>
 
 <!-- ════ PAUL'S VISION CONTRADICTION ════ -->
-<div class="section" data-s="paul">
+<div class="section" data-s="paul" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Paul's Damascus Road Vision</span><span class="t-hi" style="display:none">पौलुस का दमिश्क मार्ग का दर्शन</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Internal Contradiction</span>
   </div>
   <p class="sec-desc t-en">The Book of Acts tells the story of the Apostle Paul's miraculous conversion on the road to Damascus three separate times. However, the author bungles the details, directly contradicting himself on what Paul's companions heard and saw.</p>
@@ -901,10 +956,10 @@
 </div>
 
 <!-- ════ THE CENTURION ════ -->
-<div class="section" data-s="centurion">
+<div class="section" data-s="centurion" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Centurion's Approach</span><span class="t-hi" style="display:none">सूबेदार का दृष्टिकोण</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Character Contradiction</span>
   </div>
   <p class="sec-desc t-en">Did the Roman centurion come directly to Jesus to ask for healing, or did he specifically send Jewish elders because he felt unworthy to approach Jesus in person? Matthew and Luke give entirely different accounts of the same encounter.</p>
@@ -932,10 +987,10 @@
 </div>
 
 <!-- ════ FAITH VS WORKS ════ -->
-<div class="section" data-s="faith">
+<div class="section" data-s="faith" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Salvation: Faith vs. Works</span><span class="t-hi" style="display:none">उद्धार: विश्वास बनाम कर्म</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Irreconcilable Doctrine</span>
   </div>
   <p class="sec-desc t-en">The core of Christian theology splits completely on how one is saved. Paul argues repeatedly that salvation is by faith alone and not by works, while James explicitly attacks this doctrine, stating faith without works is dead and cannot save.</p>
@@ -963,10 +1018,10 @@
 </div>
 
 <!-- ════ THE DEATH OF JUDAS ════ -->
-<div class="section" data-s="judas">
+<div class="section" data-s="judas" data-cat="his">
   <div class="sec-head">
     <h2><span class="t-en">How Did Judas Die?</span><span class="t-hi" style="display:none">यहूदा की मृत्यु कैसे हुई?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
     <span class="sec-tag">Historical Inconsistency</span>
   </div>
   <p class="sec-desc t-en">The Bible provides two entirely different, contradictory accounts of how Judas Iscariot died and what happened to his blood money. Christians cannot reconcile these without making up events not found in the text.</p>
@@ -994,10 +1049,10 @@
 </div>
 
 <!-- ════ PUNISHING THE CHILDREN ════ -->
-<div class="section" data-s="punishment">
+<div class="section" data-s="punishment" data-cat="his">
   <div class="sec-head">
     <h2><span class="t-en">Generational Punishment</span><span class="t-hi" style="display:none">पीढ़ी दर पीढ़ी दंड</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
     <span class="sec-tag">Moral & Doctrinal Clash</span>
   </div>
   <p class="sec-desc t-en">Does God punish sons for the sins of their fathers? The Old Testament law explicitly says yes in Exodus, but later prophets like Ezekiel dedicate entire chapters to saying God absolutely does not do this.</p>
@@ -1025,10 +1080,10 @@
 </div>
 
 <!-- ════ GOD REPENTING ════ -->
-<div class="section" data-s="repentance">
+<div class="section" data-s="repentance" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Does God Change His Mind?</span><span class="t-hi" style="display:none">क्या परमेश्वर अपना मन बदलता है?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Nature of God Clash</span>
   </div>
   <p class="sec-desc t-en">The Bible claims in several places that God is perfectly omniscient and does not "repent" or change his mind like humans do. Yet, in other places, God explicitly regrets his actions, changes his mind, and alters his plans.</p>
@@ -1056,10 +1111,10 @@
 </div>
 
 <!-- ════ FATE OF THE EARTH ════ -->
-<div class="section" data-s="earth">
+<div class="section" data-s="earth" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">The Fate of the Earth</span><span class="t-hi" style="display:none">पृथ्वी का भविष्य</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Prophetic Contradiction</span>
   </div>
   <p class="sec-desc t-en">Will the Earth exist forever, or will it be completely destroyed by fire? The Bible makes absolute statements supporting both outcomes.</p>
@@ -1087,10 +1142,10 @@
 </div>
 
 <!-- ════ RESURRECTION DISCREPANCIES ════ -->
-<div class="section" data-s="resurrection">
+<div class="section" data-s="resurrection" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Resurrection Discrepancies</span><span class="t-hi" style="display:none">पुनरुत्थान के विरोधाभास</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Foundational Collapse</span>
   </div>
   <p class="sec-desc t-en">The resurrection is the central pillar of Christianity, yet the four Gospel authors cannot agree on basic facts: who went to the tomb, how many angels they saw, and what they were told.</p>
@@ -1118,10 +1173,10 @@
 </div>
 
 <!-- ════ GENEALOGY OF JESUS ════ -->
-<div class="section" data-s="genealogy">
+<div class="section" data-s="genealogy" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Two Different Genealogies</span><span class="t-hi" style="display:none">दो अलग-अलग वंशावलियाँ</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Historical Inconsistency</span>
   </div>
   <p class="sec-desc t-en">Matthew and Luke attempt to prove Jesus is descended from King David, but they provide mutually exclusive family trees that wildly disagree on the names and number of generations.</p>
@@ -1140,10 +1195,10 @@
 </div>
 
 <!-- ════ DAVID'S CENSUS ════ -->
-<div class="section" data-s="provoke">
+<div class="section" data-s="provoke" data-cat="con">
   <div class="sec-head">
     <h2><span class="t-en">Who Provoked David? God or Satan?</span><span class="t-hi" style="display:none">दाऊद को किसने उकसाया? परमेश्वर या शैतान?</span></h2>
-    <div class="sec-line"></div>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
     <span class="sec-tag">Direct Self-Contradiction</span>
   </div>
   <p class="sec-desc t-en">The Bible records the exact same historical event (King David taking a census) in two different books, but fundamentally disagrees on who caused him to do it.</p>
@@ -1157,6 +1212,492 @@
       <p class="card-desc"><strong>2 Samuel 24:1</strong>: "And again the anger of <strong>the LORD</strong> was kindled against Israel, and he moved David against them to say, Go, number Israel..."<br><br><strong>1 Chronicles 21:1</strong>: "And <strong>Satan</strong> stood up against Israel, and provoked David to number Israel."</p>
       <p class="card-desc-hi" style="display:none"><strong>२ शमूएल २४:१</strong>: "तब <strong>यहोवा</strong> का कोप इस्राएल पर भड़का, और उसने दाऊद को उकसाया कि जा, इस्राएल की गिनती कर।"<br><br><strong>१ इतिहास २१:१</strong>: "और <strong>शैतान</strong> इस्राएल के विरुद्ध खड़ा हुआ, और दाऊद को इस्राएल की गिनती करने के लिए उकसाया।"</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ TALKING SERPENT ════ -->
+<div class="section" data-s="snakes" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">The Talking Serpent & Cursed Anatomy</span><span class="t-hi" style="display:none">बात करने वाला साँप और श्राप</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Scientific & Internal Absurdity</span>
+  </div>
+  <p class="sec-desc t-en">Genesis presents a serpent that speaks fluent Hebrew. God then curses it to crawl on its belly — implying it had legs before, which no fossil record supports for any common ancestor matching the Genesis timeline.</p>
+  <p class="sec-desc t-hi" style="display:none">उत्पत्ति में एक साँप है जो बात करता है। फिर परमेश्वर उसे पेट के बल चलने का श्राप देता है — यह मानता है कि पहले उसके पाँव थे, जो किसी जीवाश्म प्रमाण से समर्थित नहीं है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Genesis+3%3A1-14&version=KJV" target="_blank" class="card a-green" data-trad="ot">
+      <span class="card-icon">🐍</span>
+      <div class="card-title">Genesis 3:1-14 — The Legless Serpent Curse</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति ३:१-१४ — पाँव रहित साँप का श्राप</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">The serpent addresses Eve coherently. God's curse: "Upon thy belly shalt thou go, and dust shalt thou eat all the days of thy life." The curse implies it previously walked upright or on legs. No snake ancestor in the fossil record ever had the body plan implied by this timeline. Additionally: snakes do not eat dust.</p>
+      <p class="card-desc-hi" style="display:none">साँप हव्वा से स्पष्ट रूप से बात करता है। परमेश्वर का श्राप: "तू पेट के बल चलेगा।" श्राप का अर्थ है कि पहले वह किसी अन्य तरीके से चलता था। कोई जीवाश्म प्रमाण इसका समर्थन नहीं करता। इसके अलावा: साँप मिट्टी नहीं खाते।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ BIBLE'S WRONG PI ════ -->
+<div class="section" data-s="pi" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">The Bible's Mathematically Wrong Value of Pi</span><span class="t-hi" style="display:none">बाइबल का गणितीय रूप से गलत पाई का मान</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Verifiable Mathematical Error</span>
+  </div>
+  <p class="sec-desc t-en">The Bible describes a circular basin in Solomon's Temple with a diameter of 10 cubits and a circumference of 30 cubits. This implies π = 3.0 exactly. The actual value of π is 3.14159…. This is not a rounding — the text gives whole numbers as exact measurements. Scholars cannot deny the math.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल सुलैमान के मंदिर में एक गोल हौज़ का वर्णन करती है जिसका व्यास १० हाथ और परिधि ३० हाथ है। इसका अर्थ है π = ३.०। π का वास्तविक मान ३.१४१५९... है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=1+Kings+7%3A23%3B2+Chronicles+4%3A2&version=KJV" target="_blank" class="card a-blue" data-trad="ot">
+      <span class="card-icon">🔢</span>
+      <div class="card-title">1 Kings 7:23 — Pi = 3.0</div>
+      <div class="card-title-hi" style="display:none">१ राजा ७:२३ — पाई = ३.०</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And he made a molten sea, ten cubits from the one brim to the other: it was round all about... and a line of thirty cubits did compass it round about." Diameter 10, circumference 30. This mathematically defines π as exactly 3, an error of 4.5%. Confirmed by 2 Chronicles 4:2 with identical numbers. No "rounding" explanation works — both books give the same precise integers.</p>
+      <p class="card-desc-hi" style="display:none">"और उसने ढला हुआ हौज़ बनाया, एक किनारे से दूसरे किनारे तक दस हाथ... और तीस हाथ की डोर उसे घेरती थी।" व्यास १०, परिधि ३०। यह गणितीय रूप से π को ठीक ३ परिभाषित करता है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ BATS AS BIRDS ════ -->
+<div class="section" data-s="bats" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">The Bible Classifies Bats as Birds</span><span class="t-hi" style="display:none">बाइबल चमगादड़ों को पक्षी मानती है</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Biological Classification Error</span>
+  </div>
+  <p class="sec-desc t-en">Leviticus 11 gives a list of "unclean birds" that Israelites must not eat. The bat is included in this list. Bats are mammals — order Chiroptera — not birds. This is an unambiguous, irrefutable biological error in the "Word of God." Christian scholars universally acknowledge bats are not birds.</p>
+  <p class="sec-desc t-hi" style="display:none">लैव्यव्यवस्था ११ में "अशुद्ध पक्षियों" की सूची है जिन्हें इस्राएलियों को नहीं खाना चाहिए। इस सूची में चमगादड़ शामिल है। चमगादड़ स्तनधारी हैं — पक्षी नहीं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Leviticus+11%3A13-19&version=KJV" target="_blank" class="card a-red" data-trad="ot">
+      <span class="card-icon">🦇</span>
+      <div class="card-title">Leviticus 11:13-19 — Bat Listed as a Bird</div>
+      <div class="card-title-hi" style="display:none">लैव्यव्यवस्था ११:१३-१९ — चमगादड़ पक्षियों की सूची में</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And these are they which ye shall have in abomination among the fowls... the stork, the heron after her kind, and the lapwing, and <strong>the bat</strong>." Bats are warm-blooded mammals that nurse their young with milk, have fur, and give live birth. They share zero characteristics with birds beyond the ability to fly. Deuteronomy 14:11-18 repeats the same error.</p>
+      <p class="card-desc-hi" style="display:none">"और ये हैं जो पक्षियों में से घृणित हैं... बगुला, और उसकी जाति का टिटिहरी, और <strong>चमगादड़</strong>।" चमगादड़ स्तनधारी हैं जो अपने बच्चों को दूध पिलाते हैं, उनमें बाल होते हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ MUSTARD SEED ════ -->
+<div class="section" data-s="mustard" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">Jesus's "Smallest Seed" Botany Error</span><span class="t-hi" style="display:none">यीशु की "सबसे छोटे बीज" की वनस्पति विज्ञान गलती</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Factual Scientific Error</span>
+  </div>
+  <p class="sec-desc t-en">Jesus declares the mustard seed to be the smallest of all seeds. This is factually incorrect. The mustard seed is not the world's smallest seed — orchid seeds, for example, are thousands of times smaller. An omniscient God would have known this.</p>
+  <p class="sec-desc t-hi" style="display:none">यीशु सरसों के बीज को सब बीजों में सबसे छोटा घोषित करते हैं। यह तथ्यात्मक रूप से गलत है। ऑर्किड के बीज हजारों गुना छोटे होते हैं। एक सर्वज्ञ परमेश्वर यह जानता।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+13%3A31-32%3BMark+4%3A31&version=KJV" target="_blank" class="card a-green" data-trad="nt">
+      <span class="card-icon">🌱</span>
+      <div class="card-title">Matthew 13:32 — "Least of All Seeds"</div>
+      <div class="card-title-hi" style="display:none">मत्ती १३:३२ — "सब बीजों में सबसे छोटा"</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Which indeed is <strong>the least of all seeds</strong>: but when it is grown, it is the greatest among herbs, and becometh a tree..." The mustard seed is approximately 1–2 mm in diameter. Orchid seeds (Kinabalu orchid) are 0.085 mm. Fig seeds, begonia seeds, and dozens of other plants have smaller seeds. Additionally, mustard plants do not become trees — they are herbaceous shrubs.</p>
+      <p class="card-desc-hi" style="display:none">"जो <strong>सब बीजों में सबसे छोटा</strong> है... परंतु जब बढ़ता है, तो सब साग-पात से बड़ा होता है और पेड़ बन जाता है।" सरसों का बीज लगभग १-२ मिमी का होता है। ऑर्किड के बीज ०.०८५ मिमी के होते हैं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ STARS WILL FALL ════ -->
+<div class="section" data-s="stars" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">Stars "Falling" to Earth</span><span class="t-hi" style="display:none">तारे पृथ्वी पर "गिरेंगे"</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Cosmological Absurdity</span>
+  </div>
+  <p class="sec-desc t-en">Both Jesus in Matthew and John in Revelation describe stars literally falling from the sky to earth. Stars are massive nuclear fusion reactors — the Sun is 1.3 million times larger than Earth. A star "falling to earth" is a cosmological impossibility that reveals these authors thought stars were small objects embedded in a dome above a flat earth.</p>
+  <p class="sec-desc t-hi" style="display:none">मत्ती में यीशु और प्रकाशितवाक्य में यूहन्ना दोनों आकाश से पृथ्वी पर तारों के गिरने का वर्णन करते हैं। तारे विशाल परमाणु संलयन रिएक्टर हैं — सूर्य पृथ्वी से १३ लाख गुना बड़ा है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+24%3A29%3BRevelation+6%3A13&version=KJV" target="_blank" class="card a-purple" data-trad="nt">
+      <span class="card-icon">⭐</span>
+      <div class="card-title">Matthew 24:29 & Revelation 6:13</div>
+      <div class="card-title-hi" style="display:none">मत्ती २४:२९ और प्रकाशितवाक्य ६:१३</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 24:29:</strong> "and the stars shall fall from heaven, and the powers of the heavens shall be shaken."<br><strong>Revelation 6:13:</strong> "And the stars of heaven fell unto the earth, even as a fig tree casteth her untimely figs, when she is shaken of a mighty wind." — The nearest star (Proxima Centauri) is 4.24 light-years away and 200,000× Earth's mass. These verses reveal a pre-scientific flat-earth cosmology.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती २४:२९:</strong> "और तारे आकाश से गिरेंगे।"<br><strong>प्रकाशितवाक्य ६:१३:</strong> "और आकाश के तारे पृथ्वी पर ऐसे गिरे जैसे अंजीर के पेड़ से बड़ी हवा में कच्चे फल गिरते हैं।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ HARES CHEW CUD ════ -->
+<div class="section" data-s="hares" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">Hares and Rabbits "Chew the Cud"</span><span class="t-hi" style="display:none">खरगोश "जुगाली" करते हैं</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Biological Factual Error</span>
+  </div>
+  <p class="sec-desc t-en">Leviticus states that hares chew the cud, classifying them as partial ruminants. Hares and rabbits are lagomorphs, not ruminants. They do not have multi-chambered stomachs and they do not chew cud. This is a straightforward biological error universally acknowledged by zoologists.</p>
+  <p class="sec-desc t-hi" style="display:none">लैव्यव्यवस्था कहती है कि खरगोश जुगाली करते हैं। खरगोश लैगोमॉर्फ हैं, जुगाली करने वाले नहीं। उनके पास बहु-कक्षीय पेट नहीं होता। यह एक स्पष्ट जैविक गलती है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Leviticus+11%3A6%3BDeuteronomy+14%3A7&version=KJV" target="_blank" class="card a-teal" data-trad="ot">
+      <span class="card-icon">🐇</span>
+      <div class="card-title">Leviticus 11:6 — Hares "Chew the Cud"</div>
+      <div class="card-title-hi" style="display:none">लैव्यव्यवस्था ११:६ — खरगोश "जुगाली करते हैं"</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And the hare, because he cheweth the cud, but divideth not the hoof; he is unclean unto you." Hares perform cecotrophy — eating their own soft fecal pellets — which superficially resembles cud-chewing but is entirely different biologically. Deuteronomy 14:7 repeats this error. No Bible apologist has successfully explained why an omniscient God would use a scientifically incorrect classification.</p>
+      <p class="card-desc-hi" style="display:none">"और खरगोश, क्योंकि वह जुगाली तो करता है, परंतु खुर नहीं फाड़ता; वह तुम्हारे लिए अशुद्ध है।" खरगोश अपने मल-कण खाते हैं जो जुगाली नहीं है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ NOAH'S FLOOD ════ -->
+<div class="section" data-s="flood" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Noah's Flood: Internal Contradictions</span><span class="t-hi" style="display:none">नूह की बाढ़: आंतरिक विरोधाभास</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Multiple Self-Contradictions in One Story</span>
+  </div>
+  <p class="sec-desc t-en">Within the flood narrative itself, Genesis contradicts itself on how many animals were taken on the ark, and how many days the flood lasted. Two different source documents (J and P) were spliced together, leaving the contradictions intact.</p>
+  <p class="sec-desc t-hi" style="display:none">बाढ़ की कहानी में ही, उत्पत्ति इस बात पर खुद से विरोधाभास करती है कि कितने जानवर नाव पर लिए गए और बाढ़ कितने दिन रही। दो अलग स्रोत दस्तावेज़ मिलाए गए।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Genesis+6%3A19%3BGenesis+7%3A2&version=KJV" target="_blank" class="card a-blue" data-trad="ot">
+      <span class="card-icon">🚢</span>
+      <div class="card-title">Genesis 6:19 vs 7:2 — Two of Each or Seven?</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति ६:१९ बनाम ७:२ — दो या सात?</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Genesis 6:19:</strong> "And of every living thing of all flesh, two of every sort shalt thou bring into the ark, to keep them alive."<br><strong>Genesis 7:2:</strong> "Of every clean beast thou shalt take to thee by sevens, the male and his female: and of beasts that are not clean by two."<br>The same God gives two different numbers within three verses of each other.</p>
+      <p class="card-desc-hi" style="display:none"><strong>उत्पत्ति ६:१९:</strong> "हर एक जाति के दो-दो जानवर... जीवित रखने को नाव में ले आ।"<br><strong>उत्पत्ति ७:२:</strong> "सब शुद्ध पशुओं में से सात-सात... और जो शुद्ध नहीं उनमें से दो-दो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+    <a href="https://www.biblegateway.com/passage/?search=Genesis+7%3A17%3BGenesis+7%3A24&version=KJV" target="_blank" class="card a-blue" data-trad="ot">
+      <span class="card-icon">🌊</span>
+      <div class="card-title">Genesis 7:17 vs 7:24 — 40 Days or 150 Days?</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति ७:१७ बनाम ७:२४ — ४० दिन या १५० दिन?</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Genesis 7:17:</strong> "And the flood was <strong>forty days</strong> upon the earth."<br><strong>Genesis 7:24:</strong> "And the waters prevailed upon the earth an <strong>hundred and fifty days</strong>." Two radically different flood durations given by the same book within the same chapter.</p>
+      <p class="card-desc-hi" style="display:none"><strong>उत्पत्ति ७:१७:</strong> "और जल पृथ्वी पर <strong>चालीस दिन</strong> रहा।"<br><strong>उत्पत्ति ७:२४:</strong> "और जल पृथ्वी पर <strong>एक सौ पचास दिन</strong> तक बना रहा।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ TOWER OF BABEL ════ -->
+<div class="section" data-s="babel" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Tower of Babel — God Afraid of Humans?</span><span class="t-hi" style="display:none">बाबेल का मीनार — परमेश्वर मनुष्यों से डरा?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Theological Absurdity</span>
+  </div>
+  <p class="sec-desc t-en">God destroys the Tower of Babel because he fears what humans might accomplish. An all-powerful, omniscient God who created the universe admits to being threatened by a mud-brick tower. The text is explicit — this is not metaphor.</p>
+  <p class="sec-desc t-hi" style="display:none">परमेश्वर बाबेल के मीनार को इसलिए नष्ट करता है क्योंकि वह डरता है कि मनुष्य क्या कर सकते हैं। एक सर्वशक्तिमान, सर्वज्ञ परमेश्वर एक मिट्टी की ईंट के मीनार से खतरा महसूस करता है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Genesis+11%3A1-9&version=KJV" target="_blank" class="card a-saffron" data-trad="ot">
+      <span class="card-icon">🏗️</span>
+      <div class="card-title">Genesis 11:6 — God's Fear</div>
+      <div class="card-title-hi" style="display:none">उत्पत्ति ११:६ — परमेश्वर का भय</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And the LORD said, Behold, the people is one, and they have all one language; and this they begin to do: and now <strong>nothing will be restrained from them, which they have imagined to do</strong>." The omnipotent creator of the cosmos destroys human language because he fears that nothing will stop humans from achieving what they imagine. This directly contradicts God's omnipotence — if God is all-powerful, there is no human achievement that could threaten him.</p>
+      <p class="card-desc-hi" style="display:none">"और यहोवा ने कहा, देखो, ये लोग एक हैं और इन सबकी एक ही भाषा है... और अब <strong>जो कुछ वे करने की सोचेंगे, उससे वे रुक न सकेंगे।</strong>" सर्वशक्तिमान परमेश्वर मानव भाषा को नष्ट करता है क्योंकि वह डरता है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Theological Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ SUN STANDS STILL ════ -->
+<div class="section" data-s="sun" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">The Sun "Stands Still" for a Full Day</span><span class="t-hi" style="display:none">सूर्य एक पूरे दिन के लिए "रुक गया"</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Astronomical & Physical Impossibility</span>
+  </div>
+  <p class="sec-desc t-en">The Book of Joshua claims the sun stood still for approximately a full day to give the Israelites more daylight for battle. The Earth would have to instantaneously stop rotating. The tidal forces and inertia from such an event would destroy all life on Earth.</p>
+  <p class="sec-desc t-hi" style="display:none">यहोशू की पुस्तक का दावा है कि सूर्य लगभग एक पूरे दिन के लिए रुक गया। पृथ्वी को तुरंत घूमना बंद करना होता। ऐसी घटना से सभी जीवन नष्ट हो जाता।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Joshua+10%3A12-14&version=KJV" target="_blank" class="card a-saffron" data-trad="ot">
+      <span class="card-icon">☀️</span>
+      <div name="card-title">Joshua 10:13 — Sun Stood Still</div>
+      <div class="card-title">Joshua 10:13 — Sun Stood Still</div>
+      <div class="card-title-hi" style="display:none">यहोशू १०:१३ — सूर्य रुक गया</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"And the sun stood still, and the moon stayed, until the people had avenged themselves upon their enemies... So the sun stood still in the midst of heaven, and hasted not to go down about a whole day." No solar eclipse, no conjunction, and no astronomical record from Egypt, Babylon, China, or any other civilization — all of which kept meticulous astronomical records — records this event. The Earth stopping rotation would produce catastrophic tsunamis and 1,600 km/h winds.</p>
+      <p class="card-desc-hi" style="display:none">"और सूर्य ठहर गया... सूर्य आकाश के बीच में ठहर गया और लगभग एक पूरे दिन तक अस्त होने में जल्दी न की।" किसी भी सभ्यता के खगोलीय अभिलेख में इस घटना का कोई उल्लेख नहीं है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ SOLOMON'S HORSES ════ -->
+<div class="section" data-s="solomon" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Solomon's Horses: 4,000 or 40,000?</span><span class="t-hi" style="display:none">सुलैमान के घोड़े: ४,००० या ४०,०००?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Direct Internal Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">Two books of the Bible describe King Solomon's stables and give a tenfold difference in the number of horses. Both books claim to be reporting the same historical fact about the same king.</p>
+  <p class="sec-desc t-hi" style="display:none">बाइबल की दो पुस्तकें राजा सुलैमान के अस्तबल का वर्णन करती हैं और घोड़ों की संख्या में दस गुना अंतर देती हैं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=1+Kings+4%3A26%3B2+Chronicles+9%3A25&version=KJV" target="_blank" class="card a-teal" data-trad="ot">
+      <span class="card-icon">🐴</span>
+      <div class="card-title">1 Kings 4:26 vs 2 Chronicles 9:25</div>
+      <div class="card-title-hi" style="display:none">१ राजा ४:२६ बनाम २ इतिहास ९:२५</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>1 Kings 4:26:</strong> "And Solomon had <strong>forty thousand</strong> stalls of horses for his chariots, and twelve thousand horsemen."<br><strong>2 Chronicles 9:25:</strong> "And Solomon had <strong>four thousand</strong> stalls for horses and chariots, and twelve thousand horsemen." The same event, the same king, a 10× discrepancy between two books of the same Bible.</p>
+      <p class="card-desc-hi" style="display:none"><strong>१ राजा ४:२६:</strong> "और सुलैमान के रथों के लिए <strong>चालीस हजार</strong> अस्तबल थे।"<br><strong>२ इतिहास ९:२५:</strong> "और सुलैमान के पास <strong>चार हजार</strong> अस्तबल थे।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ FOUR-LEGGED INSECTS ════ -->
+<div class="section" data-s="insects" data-cat="sci">
+  <div class="sec-head">
+    <h2><span class="t-en">The Bible Says Insects Have Four Legs</span><span class="t-hi" style="display:none">बाइबल कहती है कीड़ों के चार पाँव हैं</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
+    <span class="sec-tag">Elementary Biological Error</span>
+  </div>
+  <p class="sec-desc t-en">Leviticus 11 describes insects as having four legs, when defining which ones are clean to eat. Every insect on Earth has six legs — this is the defining characteristic of the class Insecta. This is not a translation issue; the passage gives a specific number.</p>
+  <p class="sec-desc t-hi" style="display:none">लैव्यव्यवस्था ११ कीड़ों को चार पाँव वाला बताती है। पृथ्वी पर प्रत्येक कीट के छह पाँव होते हैं — यह कीट वर्ग की परिभाषित विशेषता है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Leviticus+11%3A20-23&version=KJV" target="_blank" class="card a-red" data-trad="ot">
+      <span class="card-icon">🦗</span>
+      <div class="card-title">Leviticus 11:20-23 — "Four Feet" on Flying Insects</div>
+      <div class="card-title-hi" style="display:none">लैव्यव्यवस्था ११:२०-२३ — उड़ने वाले कीड़ों के "चार पाँव"</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"All fowls that creep, going upon all four, shall be an abomination unto you." (v.20) Then v.23: "But all other flying creeping things, which have <strong>four feet</strong>, shall be an abomination unto you." All insects have six legs (three pairs), not four. Grasshoppers, locusts, beetles — all six-legged. No apologist has successfully reframed this; some try to argue "four" means "many" which the Hebrew does not support.</p>
+      <p class="card-desc-hi" style="display:none">"परंतु जितने उड़ने वाले रेंगने वाले जीव <strong>चार पाँव</strong> के हैं, वे तुम्हारे लिए घृणित हैं।" सभी कीड़ों के छह पाँव होते हैं, चार नहीं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ PRAYER PROMISED ════ -->
+<div class="section" data-s="prayer" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Jesus's Unconditional Prayer Promises</span><span class="t-hi" style="display:none">यीशु के बिना शर्त प्रार्थना के वादे</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Empirically Falsifiable Claim</span>
+  </div>
+  <p class="sec-desc t-en">Jesus makes explicit, unconditional guarantees that God will grant any prayer made in his name. These are not metaphors — they are direct promises. The observable fact that millions of sincere, faithful prayers go unanswered makes these claims empirically false.</p>
+  <p class="sec-desc t-hi" style="display:none">यीशु स्पष्ट, बिना शर्त वादे करते हैं कि परमेश्वर उनके नाम में की गई किसी भी प्रार्थना को सुनेगा। यह रूपक नहीं हैं — ये सीधे वादे हैं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+7%3A7%3BJohn+14%3A13-14%3BMatthew+21%3A22&version=KJV" target="_blank" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🙏</span>
+      <div class="card-title">Matthew 7:7, 21:22 & John 14:13-14</div>
+      <div class="card-title-hi" style="display:none">मत्ती ७:७, २१:२२ और यूहन्ना १४:१३-१४</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 7:7:</strong> "Ask, and it shall be given you."<br><strong>Matthew 21:22:</strong> "And all things, whatsoever ye shall ask in prayer, believing, ye shall receive."<br><strong>John 14:13-14:</strong> "And whatsoever ye shall ask in my name, that will I do... If ye shall ask any thing in my name, I will do it." — No qualifier. "Whatsoever." "All things." Christians who die of cancer despite fervent prayer, children who starve despite intercession, natural disasters — all empirically falsify this promise.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती ७:७:</strong> "माँगो, और तुम्हें दिया जाएगा।"<br><strong>यूहन्ना १४:१४:</strong> "यदि तुम मेरे नाम से कुछ माँगोगे, तो मैं वह करूँगा।" — कोई शर्त नहीं। "जो कुछ।" "सब कुछ।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Falsifiable Claim</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ WOMEN MUST BE SILENT ════ -->
+<div class="section" data-s="woman" data-cat="mor">
+  <div class="sec-head">
+    <h2><span class="t-en">Women Must Be Silent in Churches</span><span class="t-hi" style="display:none">स्त्रियाँ कलीसियाओं में चुप रहें</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-mor">⚖️ Moral Failure</span>
+    <span class="sec-tag">Moral Failure & Internal Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">Paul commands women to be completely silent in church and to not teach or have authority over men. Yet Paul elsewhere acknowledges women who are deacons, apostles, and prophets. The New Testament contradicts itself on the role of women, and these commands endorse a moral position that most modern Christians quietly reject.</p>
+  <p class="sec-desc t-hi" style="display:none">पौलुस स्त्रियों को कलीसिया में बिल्कुल चुप रहने और पुरुषों पर अधिकार न रखने का आदेश देता है। फिर भी पौलुस अन्यत्र उन स्त्रियों को स्वीकार करता है जो दियाकोन, प्रेरित और भविष्यवक्ता हैं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=1+Corinthians+14%3A34-35%3B1+Timothy+2%3A11-12&version=KJV" target="_blank" class="card a-red" data-trad="nt">
+      <span class="card-icon">🤫</span>
+      <div class="card-title">1 Corinthians 14:34-35 & 1 Timothy 2:11-12</div>
+      <div class="card-title-hi" style="display:none">१ कुरिन्थियों १४:३४-३५ और १ तीमुथियुस २:११-१२</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>1 Cor 14:34:</strong> "Let your women keep silence in the churches: for it is not permitted unto them to speak; but they are commanded to be under obedience..."<br><strong>1 Tim 2:12:</strong> "But I suffer not a woman to teach, nor to usurp authority over the man, but to be in silence."<br>Yet Romans 16:7 greets Junia as "of note among the apostles." Phoebe is named as a deacon (Romans 16:1). Priscilla teaches Apollos (Acts 18:26). The Bible contradicts itself completely on this.</p>
+      <p class="card-desc-hi" style="display:none"><strong>१ कुरिन्थियों १४:३४:</strong> "तुम्हारी स्त्रियाँ कलीसियाओं में चुप रहें।"<br><strong>१ तीमुथियुस २:१२:</strong> "और मैं स्त्री को न तो उपदेश देने देता हूँ, न पुरुष पर अधिकार जताने देता हूँ।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Moral Failure</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-vs">Contradiction</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ HELL CONTRADICTION ════ -->
+<div class="section" data-s="hell" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Is Hell Eternal or Does It End?</span><span class="t-hi" style="display:none">क्या नरक शाश्वत है या समाप्त होता है?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Core Doctrinal Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The New Testament cannot agree on whether the punishment of the unsaved is eternal conscious torment, or total annihilation. These are two completely opposite doctrines, and both have strong biblical support — meaning the Bible contradicts itself on one of its most central teachings.</p>
+  <p class="sec-desc t-hi" style="display:none">नया नियम इस बात पर सहमत नहीं हो सकता कि अरक्षितों की सजा अनंत काल तक चलने वाली पीड़ा है या पूर्ण विनाश। ये दो पूरी तरह से विपरीत सिद्धांत हैं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+25%3A46%3BRevelation+20%3A10&version=KJV" target="_blank" class="card a-purple" data-trad="nt">
+      <span class="card-icon">🔥</span>
+      <div class="card-title">Matthew 25:46 & Rev 20:10 — Eternal Torment</div>
+      <div class="card-title-hi" style="display:none">मत्ती २५:४६ और प्रकाशितवाक्य २०:१० — अनंत दंड</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 25:46:</strong> "And these shall go away into everlasting punishment: but the righteous into life eternal."<br><strong>Revelation 20:10:</strong> "And the devil... shall be tormented day and night for ever and ever." — Eternal, never-ending conscious suffering.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती २५:४६:</strong> "और ये अनंत दंड में, परंतु धर्मी अनंत जीवन में जाएँगे।" — अनंत, कभी न खत्म होने वाली सचेत पीड़ा।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+10%3A28%3B2+Thessalonians+1%3A9%3BRomans+6%3A23&version=KJV" target="_blank" class="card a-purple" data-trad="nt">
+      <span class="card-icon">💀</span>
+      <div class="card-title">Matt 10:28 & Romans 6:23 — Annihilation</div>
+      <div class="card-title-hi" style="display:none">मत्ती १०:२८ और रोमियों ६:२३ — विनाश</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 10:28:</strong> "fear him which is able to <strong>destroy both soul and body</strong> in hell." — Destruction, not eternal torment.<br><strong>Romans 6:23:</strong> "For the wages of sin is <strong>death</strong>." — Death, not eternal suffering.<br><strong>2 Thess 1:9:</strong> "everlasting <strong>destruction</strong>." Same Bible; opposite fate.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती १०:२८:</strong> "उससे डरो जो आत्मा और शरीर दोनों को नरक में <strong>नष्ट कर सकता है</strong>।"<br><strong>रोमियों ६:२३:</strong> "पाप की मजदूरी <strong>मृत्यु</strong> है।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ BAPTISM REQUIRED ════ -->
+<div class="section" data-s="baptism" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Is Baptism Required for Salvation?</span><span class="t-hi" style="display:none">क्या उद्धार के लिए बपतिस्मा आवश्यक है?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Irreconcilable Doctrinal Conflict</span>
+  </div>
+  <p class="sec-desc t-en">The New Testament cannot agree on whether water baptism is essential for salvation or irrelevant to it. This is not a minor point — entire Christian denominations split over this question, and both sides quote the Bible directly.</p>
+  <p class="sec-desc t-hi" style="display:none">नया नियम इस बात पर सहमत नहीं हो सकता कि जल बपतिस्मा उद्धार के लिए आवश्यक है या नहीं। संपूर्ण ईसाई संप्रदाय इस प्रश्न पर विभाजित हो गए हैं।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Mark+16%3A16%3BActs+2%3A38%3B1+Peter+3%3A21&version=KJV" target="_blank" class="card a-blue" data-trad="nt">
+      <span class="card-icon">💧</span>
+      <div class="card-title">Mark 16:16, Acts 2:38 — Baptism Required</div>
+      <div class="card-title-hi" style="display:none">मरकुस १६:१६, प्रेरितों के काम २:३८ — बपतिस्मा आवश्यक</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Mark 16:16:</strong> "He that believeth and <strong>is baptized shall be saved</strong>."<br><strong>Acts 2:38:</strong> "Repent, and be baptized every one of you... for the remission of sins."<br><strong>1 Peter 3:21:</strong> "baptism doth also now save us." — Baptism explicitly required for salvation.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मरकुस १६:१६:</strong> "जो विश्वास करे और <strong>बपतिस्मा ले, वह उद्धार पाएगा</strong>।"<br><strong>प्रेरितों २:३८:</strong> "मन फिराओ और... बपतिस्मा लो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="https://www.biblegateway.com/passage/?search=Ephesians+2%3A8%3BRomans+10%3A9%3B1+Corinthians+1%3A17&version=KJV" target="_blank" class="card a-blue" data-trad="nt">
+      <span class="card-icon">✝️</span>
+      <div class="card-title">Ephesians 2:8 & 1 Corinthians 1:17 — Faith Alone</div>
+      <div class="card-title-hi" style="display:none">इफिसियों २:८ और १ कुरिन्थियों १:१७ — केवल विश्वास</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Ephesians 2:8:</strong> "For by grace are ye saved through faith... not of works." Baptism is a work.<br><strong>1 Corinthians 1:17:</strong> Paul says Christ "sent me not to baptize, but to preach the gospel." If baptism were essential for salvation, Paul would not separate it from the gospel task.<br><strong>Romans 10:9:</strong> "if thou shalt confess with thy mouth the Lord Jesus... thou shalt be saved." No mention of baptism.</p>
+      <p class="card-desc-hi" style="display:none"><strong>इफिसियों २:८:</strong> "अनुग्रह ही से विश्वास के द्वारा तुम्हारा उद्धार हुआ है।"<br><strong>१ कुरिन्थियों १:१७:</strong> पौलुस कहता है कि मसीह ने उसे बपतिस्मा देने के लिए नहीं भेजा।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ GOD COMMANDS MURDER ════ -->
+<div class="section" data-s="murder" data-cat="mor">
+  <div class="sec-head">
+    <h2><span class="t-en">"Thou Shalt Not Kill" — Then God Commands Killing</span><span class="t-hi" style="display:none">"हत्या मत करो" — फिर परमेश्वर हत्या का आदेश देता है</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-mor">⚖️ Moral Failure</span>
+    <span class="sec-tag">Direct Command Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">Exodus 20:13 is the Sixth Commandment: "Thou shalt not kill." Within the same book of Exodus and throughout the Torah, God commands the Israelites to commit mass killings of men, women, children, and infants. No apologetic explanation resolves this — the same God who forbids killing orders killing on dozens of occasions.</p>
+  <p class="sec-desc t-hi" style="display:none">निर्गमन २०:१३ छठी आज्ञा है: "हत्या मत करो।" उसी पुस्तक में, परमेश्वर इस्राएलियों को पुरुषों, स्त्रियों, बच्चों और शिशुओं के सामूहिक हत्या का आदेश देता है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Exodus+20%3A13%3B1+Samuel+15%3A3%3BNumbers+31%3A17&version=KJV" target="_blank" class="card a-red" data-trad="ot">
+      <span class="card-icon">⚔️</span>
+      <div class="card-title">Exodus 20:13 vs 1 Samuel 15:3 & Numbers 31:17</div>
+      <div class="card-title-hi" style="display:none">निर्गमन २०:१३ बनाम १ शमूएल १५:३ और गिनती ३१:१७</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Exodus 20:13:</strong> "Thou shalt not kill."<br><strong>1 Samuel 15:3:</strong> God commands Saul: "Now go and smite Amalek... kill both man and woman, infant and suckling, ox and sheep, camel and ass."<br><strong>Numbers 31:17:</strong> "Now therefore kill every male among the little ones, and kill every woman that hath known man by lying with him." — God repeatedly commands the exact same act his own commandment forbids.</p>
+      <p class="card-desc-hi" style="display:none"><strong>निर्गमन २०:१३:</strong> "हत्या मत करो।"<br><strong>१ शमूएल १५:३:</strong> परमेश्वर आदेश देता है: "पुरुष और स्त्री, बालक और दूध पीते शिशु को भी मार डालो।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Moral Failure</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ UNICORNS ════ -->
+<div class="section" data-s="unicorns" data-cat="his">
+  <div class="sec-head">
+    <h2><span class="t-en">Unicorns in the King James Bible</span><span class="t-hi" style="display:none">राजा जेम्स बाइबल में एकश्रृंगी</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
+    <span class="sec-tag">Mythical Creature as Real Animal</span>
+  </div>
+  <p class="sec-desc t-en">The King James Bible — the most widely used English Bible for 400 years — mentions the unicorn nine times as a real animal. Modern translations quietly change the word to "wild ox," but the KJV translators chose "unicorn" deliberately based on the Septuagint's use of "monoceros." Either the KJV is wrong, or unicorns are real.</p>
+  <p class="sec-desc t-hi" style="display:none">किंग जेम्स बाइबल — ४०० वर्षों तक सबसे अधिक उपयोग की जाने वाली अंग्रेजी बाइबल — नौ बार एकश्रृंगी का उल्लेख एक वास्तविक पशु के रूप में करती है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Numbers+23%3A22%3BJob+39%3A9-10%3BPsalm+22%3A21%3BIsaiah+34%3A7&version=KJV" target="_blank" class="card a-saffron" data-trad="ot">
+      <span class="card-icon">🦄</span>
+      <div class="card-title">Numbers 23:22, Job 39:9-10, Isaiah 34:7</div>
+      <div class="card-title-hi" style="display:none">गिनती २३:२२, अय्यूब ३९:९-१०, यशायाह ३४:७</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Numbers 23:22:</strong> "God brought them out of Egypt; he hath as it were the strength of an unicorn."<br><strong>Job 39:9-10:</strong> "Will the unicorn be willing to serve thee... Canst thou bind the unicorn with his band in the furrow?"<br><strong>Isaiah 34:7:</strong> "And the unicorns shall come down with them." The KJV uses "unicorn" at Numbers 23:22, 24:8; Deuteronomy 33:17; Job 39:9,10; Psalm 22:21, 29:6, 92:10; Isaiah 34:7.</p>
+      <p class="card-desc-hi" style="display:none"><strong>गिनती २३:२२:</strong> "परमेश्वर... उसकी शक्ति एकश्रृंगी के समान है।"<br><strong>अय्यूब ३९:९-१०:</strong> "क्या एकश्रृंगी तेरी सेवा करने को तैयार होगा?"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Mythological Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ DIVORCE ════ -->
+<div class="section" data-s="divorce" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Is Divorce Permitted or Absolutely Forbidden?</span><span class="t-hi" style="display:none">क्या तलाक की अनुमति है या पूर्णतः वर्जित?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Direct Instructional Contradiction</span>
+  </div>
+  <p class="sec-desc t-en">The Gospels cannot agree on whether Jesus permitted divorce for any reason. Mark and Luke present an absolute prohibition; Matthew adds an "except for fornication" exception that does not appear in the other accounts — directly contradicting them.</p>
+  <p class="sec-desc t-hi" style="display:none">सुसमाचार इस बात पर सहमत नहीं हो सकते कि क्या यीशु ने तलाक की अनुमति दी। मरकुस और लूका में पूर्ण निषेध है; मत्ती एक अपवाद जोड़ता है जो अन्य खातों में नहीं मिलता।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Mark+10%3A11-12%3BLuke+16%3A18&version=KJV" target="_blank" class="card a-teal" data-trad="nt">
+      <span class="card-icon">🚫</span>
+      <div class="card-title">Mark 10:11-12 & Luke 16:18 — Absolute Ban</div>
+      <div class="card-title-hi" style="display:none">मरकुस १०:११-१२ और लूका १६:१८ — पूर्ण प्रतिबंध</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Mark 10:11-12:</strong> "Whosoever shall put away his wife, and marry another, committeth adultery against her." — No exceptions whatsoever.<br><strong>Luke 16:18:</strong> "Whosoever putteth away his wife, and marrieth another, committeth adultery." — Again, no exceptions.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मरकुस १०:११:</strong> "जो कोई अपनी पत्नी को त्याग कर दूसरी से विवाह करे, वह उसके विरुद्ध व्यभिचार करता है।" — कोई अपवाद नहीं।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+    <a href="https://www.biblegateway.com/passage/?search=Matthew+19%3A9&version=KJV" target="_blank" class="card a-teal" data-trad="nt">
+      <span class="card-icon">📜</span>
+      <div class="card-title">Matthew 19:9 — The Exception Clause</div>
+      <div class="card-title-hi" style="display:none">मत्ती १९:९ — अपवाद खंड</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Matthew 19:9:</strong> "And I say unto you, Whosoever shall put away his wife, <strong>except it be for fornication</strong>, and shall marry another, committeth adultery." Matthew adds a fornication exception that is completely absent in Mark and Luke's accounts of the same teaching. These cannot be harmonized without claiming one gospel simply got Jesus's words wrong.</p>
+      <p class="card-desc-hi" style="display:none"><strong>मत्ती १९:९:</strong> "जो कोई <strong>व्यभिचार को छोड़कर</strong> किसी और कारण से अपनी पत्नी को छोड़ दे और दूसरी से विवाह करे।" मत्ती एक अपवाद जोड़ता है जो मरकुस और लूका में बिल्कुल नहीं है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ SABBATH DAY ════ -->
+<div class="section" data-s="sabbath" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">Which Day Is the Sabbath?</span><span class="t-hi" style="display:none">विश्राम का दिन कौन सा है?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Foundational Doctrinal Conflict</span>
+  </div>
+  <p class="sec-desc t-en">The Old Testament establishes the seventh day (Saturday) as the Sabbath, commanded by God from creation. Paul in the New Testament declares all days equal and the Sabbath law abolished in Christ. Christians split entirely on this — Saturday Adventists vs Sunday worshippers — both using the Bible.</p>
+  <p class="sec-desc t-hi" style="display:none">पुराना नियम सातवें दिन (शनिवार) को विश्राम का दिन स्थापित करता है। पौलुस नए नियम में घोषित करता है कि सभी दिन समान हैं और विश्राम का नियम मसीह में समाप्त हो गया है।</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Exodus+20%3A8-10%3BGenesis+2%3A3&version=KJV" target="_blank" class="card a-saffron" data-trad="ot">
+      <span class="card-icon">🗓️</span>
+      <div class="card-title">Exodus 20:8-10 — Saturday Sabbath Commanded</div>
+      <div class="card-title-hi" style="display:none">निर्गमन २०:८-१० — शनिवार विश्राम का आदेश</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc">"Remember the sabbath day, to keep it holy. Six days shalt thou labour... But the seventh day is the sabbath of the LORD thy God: in it thou shalt not do any work." This is one of the Ten Commandments — the most authoritative laws in all of Judaism. The seventh day of the week is Saturday, not Sunday.</p>
+      <p class="card-desc-hi" style="display:none">"विश्राम के दिन को पवित्र मानने के लिए स्मरण रखना... सातवाँ दिन तेरे परमेश्वर यहोवा का विश्राम दिन है।" यह दस आज्ञाओं में से एक है।</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-shaiva">Old Testament</span></div>
+    </a>
+    <a href="https://www.biblegateway.com/passage/?search=Romans+14%3A5%3BColossians+2%3A16-17&version=KJV" target="_blank" class="card a-saffron" data-trad="nt">
+      <span class="card-icon">🚫</span>
+      <div class="card-title">Romans 14:5 & Colossians 2:16 — Sabbath Abolished</div>
+      <div class="card-title-hi" style="display:none">रोमियों १४:५ और कुलुस्सियों २:१६ — विश्राम समाप्त</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Romans 14:5:</strong> "One man esteemeth one day above another: another esteemeth every day alike. Let every man be fully persuaded in his own mind." — All days are equal; the Sabbath commandment is dissolved.<br><strong>Colossians 2:16:</strong> "Let no man therefore judge you in meat, or in drink, or in respect of an holyday, or of the new moon, or of the <strong>sabbath days</strong>." The Saturday commandment from Exodus is explicitly cancelled by Paul.</p>
+      <p class="card-desc-hi" style="display:none"><strong>रोमियों १४:५:</strong> "एक व्यक्ति एक दिन को दूसरे से श्रेष्ठ मानता है: दूसरा सब दिनों को एक समान मानता है।"<br><strong>कुलुस्सियों २:१६:</strong> "इसलिए विश्राम के दिनों के बारे में तुम्हें कोई दोष न दे।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ════ JESUS'S AGE ════ -->
+<div class="section" data-s="age" data-cat="con">
+  <div class="sec-head">
+    <h2><span class="t-en">How Old Was Jesus When He Began Ministry?</span><span class="t-hi" style="display:none">यीशु ने किस उम्र में सेवकाई शुरू की?</span></h2>
+    <div class="sec-line"></div><span class="cat-badge cb-con">⚡ Internal Contradiction</span>
+    <span class="sec-tag">Chronological Impossibility</span>
+  </div>
+  <p class="sec-desc t-en">Luke says Jesus was "about thirty" when he began his ministry. John's Gospel, however, records the Jews telling Jesus he is "not yet fifty" — during a conversation about his age that would be strange if he were about 33. When combined with the birth contradictions (Herod died 4 BCE, Quirinius census 6 CE), no consistent age for Jesus can be calculated from the Gospel data.</p>
+  <p class="sec-desc t-hi" style="display:none">लूका कहता है कि यीशु की सेवकाई की शुरुआत में उम्र "लगभग तीस" थी। यूहन्ना के सुसमाचार में यहूदी यीशु से कहते हैं कि वह "अभी पचास साल के भी नहीं हुए।"</p>
+  <div class="grid">
+    <a href="https://www.biblegateway.com/passage/?search=Luke+3%3A23%3BJohn+8%3A56-57&version=KJV" target="_blank" class="card a-green" data-trad="nt">
+      <span class="card-icon">🎂</span>
+      <div class="card-title">Luke 3:23 vs John 8:57 — Age Inconsistency</div>
+      <div class="card-title-hi" style="display:none">लूका ३:२३ बनाम यूहन्ना ८:५७ — उम्र का विरोधाभास</div>
+      <div class="card-source">King James Version</div>
+      <p class="card-desc"><strong>Luke 3:23:</strong> "And Jesus himself began to be <strong>about thirty years of age</strong>, having been, as was supposed, the son of Joseph..."<br><strong>John 8:57:</strong> The Jews say to Jesus: "Thou art <strong>not yet fifty years old</strong>, and hast thou seen Abraham?" If Jesus were about 33 (30 + ~3 years of ministry), the natural Jewish rebuttal would be "you're not even forty"—not fifty. Early Church father Irenaeus used this verse to argue Jesus ministered until nearly 50 years old, directly contradicting Luke's timeline.</p>
+      <p class="card-desc-hi" style="display:none"><strong>लूका ३:२३:</strong> "यीशु जब सेवकाई आरंभ करने लगा, <strong>लगभग तीस वर्ष का</strong> था।"<br><strong>यूहन्ना ८:५७:</strong> यहूदियों ने यीशु से कहा: "तू <strong>अभी पचास साल का भी नहीं हुआ</strong>।"</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-vaishnava">New Testament</span></div>
     </a>
   </div>
 </div>
@@ -1267,11 +1808,38 @@
     'tab-creation':    ['Creation Order',       'सृष्टि क्रम'],
     'tab-visibility':  ['Seeing God',           'परमेश्वर को देखना'],
     'tab-portals':     ['Full Portals',         'सम्पूर्ण पोर्टल'],
+    'tab-snakes':      ['Talking Serpent',      'बात करने वाला साँप'],
+    'tab-pi':          ["Bible's Wrong Pi",     'बाइबल का गलत पाई'],
+    'tab-bats':        ['Bats as Birds',        'चमगादड़ पक्षी नहीं'],
+    'tab-mustard':     ['Mustard Seed',         'सरसों का बीज'],
+    'tab-stars':       ['Stars Will Fall',      'तारे गिरेंगे'],
+    'tab-hares':       ['Hares Chew Cud',       'खरगोश जुगाली करते'],
+    'tab-flood':       ["Noah's Flood",         'नूह की बाढ़'],
+    'tab-babel':       ['Tower of Babel',       'बाबेल का मीनार'],
+    'tab-sun':         ['Sun Stands Still',     'सूर्य रुका'],
+    'tab-solomon':     ["Solomon's Horses",     'सुलैमान के घोड़े'],
+    'tab-insects':     ['Four-Legged Insects',  'चार पाँव वाले कीड़े'],
+    'tab-prayer':      ['Prayer Promised',      'प्रार्थना का वादा'],
+    'tab-woman':       ['Women Must Be Silent', 'स्त्री चुप रहे'],
+    'tab-hell':        ['Hell Contradiction',   'नरक विरोधाभास'],
+    'tab-baptism':     ['Baptism Required?',    'बपतिस्मा जरूरी?'],
+    'tab-murder':      ['God Commands Murder',  'परमेश्वर ने हत्या का आदेश दिया'],
+    'tab-unicorns':    ['Unicorns in Bible',    'बाइबल में एकश्रृंगी'],
+    'tab-divorce':     ['Divorce Contradiction','तलाक विरोधाभास'],
+    'tab-sabbath':     ['Sabbath Day',          'विश्राम का दिन'],
+    'tab-age':         ["Jesus's Age",          'यीशु की उम्र'],
   };
   const tradTabLabels = {
     'trad-all':    ['All Sources',       'सभी स्रोत'],
     'trad-nt':     ['New Testament',     'नया नियम'],
     'trad-ot':     ['Old Testament',     'पुराना नियम'],
+  };
+  const catTabLabels = {
+    'cat-all':  ['All Categories',          'सभी श्रेणियाँ'],
+    'cat-sci':  ['🔬 Scientific Errors',    '🔬 वैज्ञानिक त्रुटियाँ'],
+    'cat-con':  ['⚡ Internal Contradictions','⚡ आंतरिक विरोधाभास'],
+    'cat-his':  ['📜 Historical Blunders',  '📜 ऐतिहासिक भूलें'],
+    'cat-mor':  ['⚖️ Moral Failures',       '⚖️ नैतिक विफलताएँ'],
   };
 
   function setLang(lang, btn) {
@@ -1299,11 +1867,16 @@
       const el = document.getElementById(id);
       if (el) el.textContent = hi ? h : en;
     }
+    for (const [id, [en, h]] of Object.entries(catTabLabels)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = hi ? h : en;
+    }
   }
 
   // ── FILTER STATE ──
   let activeSection = 'all';
   let activeTrad    = 'all';
+  let activeCat     = 'all';
 
   function applyFilters() {
     let anyVisible = false;
@@ -1318,6 +1891,11 @@
       }
 
       if (!sMatch) { sec.classList.add('hidden'); return; }
+
+      // Category filter on the section itself
+      const secCat = sec.dataset.cat || '';
+      const cMatch = activeCat === 'all' || secCat === activeCat;
+      if (!cMatch) { sec.classList.add('hidden'); return; }
 
       let secHasVisible = false;
       sec.querySelectorAll('.card').forEach(card => {
@@ -1335,7 +1913,7 @@
 
   // ── SECTION FILTER ──
   function filterSection(key, btn) {
-    document.querySelectorAll('.tabs:not(.trad-tabs) .tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tabs:not(.trad-tabs):not(.cat-tabs) .tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     activeSection = key;
     applyFilters();
@@ -1346,6 +1924,14 @@
     document.querySelectorAll('.trad-tabs .tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     activeTrad = key;
+    applyFilters();
+  }
+
+  // ── CATEGORY FILTER ──
+  function filterCat(key, btn) {
+    document.querySelectorAll('.cat-tabs .tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = key;
     applyFilters();
   }
 </script>
