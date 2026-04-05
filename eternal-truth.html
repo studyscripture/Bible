@@ -30,6 +30,11 @@
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.6;
+    /* === ANTI-COPY PROTECTION: user-select none on body (skeleton) === */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   body::before {
     content: '';
@@ -163,6 +168,22 @@
     color: var(--cream); line-height: 1.7;
   }
 
+  /* SELECTIVELY RE-ENABLE COPYING FOR SCRIPTURE / ESSAY TEXT (as requested) */
+  .essay p,
+  .essay .mahavakya,
+  .essay .pull-quote,
+  .essay h2,
+  .essay .sub-head,
+  .essay strong,
+  .hub-text,
+  .hub-name,
+  .hub-desc {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
@@ -190,9 +211,14 @@
     h1 { font-size: 28px; }
     .essay h2 { font-size: 20px; }
   }
+
+  /* === PRINT PROTECTION: blank page on print / print-to-PDF === */
+  @media print {
+    body { display: none !important; }
+  }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
 <div class="nav-bar">
   <a href="index.html" class="back-link">← Bible Falsehood Hub</a>
@@ -420,6 +446,37 @@
     <a href="index.html" class="back-footer">← Return to Bible Falsehood Hub</a>
   </div>
 </footer>
+
+<!-- === JS KEYBOARD BLOCK (Ctrl/Cmd+U, S, A, F12, Ctrl+Shift+I/J/C) === -->
+<script>
+document.addEventListener('keydown', function(e) {
+  // Ctrl or Cmd + S (save page)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl or Cmd + U (view source)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl or Cmd + A (select all)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
+    e.preventDefault();
+    return false;
+  }
+  // F12 (DevTools)
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl + Shift + I, J, or C (DevTools shortcuts)
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+    e.preventDefault();
+    return false;
+  }
+});
+</script>
 
 </body>
 </html>
